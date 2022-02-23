@@ -4,8 +4,10 @@ this a git test
 
 #git 命令
 
-#创建分支
-git branch mybranch
+#创建分支  
+
+git branch mybranch  
+
 #切换分支
 git checkout mybranch
 #创建并切换分支
