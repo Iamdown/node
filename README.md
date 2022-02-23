@@ -83,6 +83,8 @@ this a git test
 	git checkout -b mybranch origin/mybranch  
 
 #删除远程分支  
+
 	git push origin : mybranch  
+
 
 
