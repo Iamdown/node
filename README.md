@@ -6,7 +6,7 @@ this a git test
 
 #创建分支  
 ```Python
-	git branch mybranch
+git branch mybranch
 ```
 
 #切换分支  
