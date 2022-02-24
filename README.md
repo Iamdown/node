@@ -6,12 +6,11 @@ this a git test
 
 #创建分支  
 
-```
+
 #git branch mybranch
+====
 def get_html():
 	pirnt("hello world")
-
-```
 
 #切换分支  
 
