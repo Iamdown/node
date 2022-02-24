@@ -5,11 +5,8 @@ this a git test
 #git 命令
 
 #创建分支  
-```python
-#git branch mybranch
-def get():
-   pass
-```
+
+	git branch mybranch
 
 #切换分支  
 
