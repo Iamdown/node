@@ -5,12 +5,9 @@ this a git test
 #git 命令
 
 #创建分支  
-
-
-#git branch mybranch
-====
-def get_html():
-	pirnt("hello world")
+```Python
+	git branch mybranch
+```
 
 #切换分支  
 
