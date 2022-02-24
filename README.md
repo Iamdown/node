@@ -5,7 +5,7 @@ this a git test
 #git 命令
 
 #创建分支  
-```Python
+```python
 git branch mybranch
 ```
 
