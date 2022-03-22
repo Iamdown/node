@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Language" content="zh-cn" />
+<title>上下滑动的侧边栏</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<style type="text/css">
+*{
+    margin: 0px; padding: 0px; font-size:14px; font-family:'微软雅黑'; font-size:12px;
+}
+.clearfix:after{content:'.';display:block;height:0;clear:both;visibility:hidden}
+.clearfix{display:inline-block;}
+* html .clearfix{height:1%}
+.clearfix{display:black;}
+ul li{
+  list-style:none;
+}
+#box{width:100px; height:100px; background:red; position:absolute; top:416px;right:0px;}
+</style>
+</head>
+<body style='height:2000px;'>
+<script type="text/javascript">
+window.onload=window.onscroll=function(){
+  var oBox = document.getElementById('box');
+  var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+  var t = Math.round(scrollTop + (document.documentElement.clientHeight - oBox.offsetHeight)/2); //固定在页面中间
+  Move(oBox,t);
+}
+function Move(obj,iTarget){
+  clearInterval(obj.timer);
+  obj.timer = setInterval(function(){
+    var ispeed=(iTarget-obj.offsetTop)/8;
+    ispeed=ispeed>0?Math.ceil(ispeed):Math.floor(ispeed);
+    if(obj.offsetTop == iTarget){
+       clearInterval(obj.timer);
+    }else{
+       obj.style.top=obj.offsetTop+ispeed+'px';
+       obj.innerHTML = obj.style.top;
+    }
+  },30);
+};
+</script>
+<div id='box'></div>
+</body>
+</html>

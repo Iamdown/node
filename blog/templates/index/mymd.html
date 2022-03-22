@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    {{ form.media }}
+</head>
+<body>
+
+<div class="editor">
+    <form action="" method="post">
+    	{% csrf_token %}
+        <label for="title">标题:</label>
+        <input name="title" type="text" id="title"><br>
+        {{ form.as_p }}
+        <input type="submit" value="提交">
+    </form>
+</div>
+
+</body>
+</html>

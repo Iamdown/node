@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+
+<html lang="en" >
+<head>
+<title>Change artical | Django site admin</title>
+
+    {% include 'index/head.html' %}
+<link rel="stylesheet" type="text/css" href="/public/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/public/admin/css/forms.css" />
+
+
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<link href="/public/mdeditor/css/editormd.css" type="text/css" media="all" rel="stylesheet" />
+<script type="text/javascript" src="/public/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/public/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/public/admin/js/core.js"></script>
+<script type="text/javascript" src="/public/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/public/admin/js/actions.js"></script>
+<script type="text/javascript" src="/public/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/public/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/public/admin/js/vendor/xregexp/xregexp.js"></script>
+<script type="text/javascript" src="/public/admin/js/calendar.js"></script>
+<script type="text/javascript" src="/public/admin/js/admin/DateTimeShortcuts.js"></script>
+<script type="text/javascript" src="/public/mdeditor/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/mdeditor/js/editormd.min.js"></script>
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/admin/css/responsive.css" />
+
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+
+<body class=" app-index model-artical change-form"
+  data-admin-utc-offset="28800">
+
+{% include 'index/header.html' %}
+
+<!-- Container -->
+<div id="container">
+
+
+
+    <!-- Content -->
+    <div id="content" class="colM">
+
+        <h1>Change artical</h1>
+        <div id="content-main">
+
+
+
+
+
+<form enctype="multipart/form-data" action="" method="post" id="artical_form" novalidate><input type='hidden' name='csrfmiddlewaretoken' value='Bu8ZvO3W4kEkChYY1v2SUfEYWKzYx8uz7vFj2e9VmGyh7M2StQp5V101U4fSQurk' />
+<div>
+
+
+
+
+
+
+
+  <fieldset class="module aligned ">
+
+
+
+        <div class="form-row field-a_title">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_title"> title:</label>
+
+                            <input type="text" name="a_title" value="HTML+CSS+JS" class="vTextField" maxlength="300" required id="id_a_title" />
+
+
+
+                </div>
+
+        </div>
+
+
+        <div class="form-row field-a_auth">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_auth"> auth name:</label>
+
+                            <input type="text" name="a_auth_name" value="{{ request.user.username }}" class="vTextField" maxlength="300" required id="id_a_title" disabled />
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_publish_date">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_publish_date"> publish date:</label>
+
+                            <input type="text" name="a_publish_date" value="2021-08-06" class="vDateField" size="10" required id="id_a_publish_date" />
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_publish_time">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_publish_time"> publish time:</label>
+
+                            <input type="text" name="a_publish_time" value="13:54:43" class="vTimeField" size="8" required id="id_a_publish_time" />
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_content">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_content">文章内容:</label>
+
+
+<style type="text/css">
+    .wmd-wrapper  ul {
+        margin-left: 0px !important;
+    }
+    .wmd-wrapper ul li{
+        list-style: disc !important;
+    }
+    .wmd-wrapper ul ul li{
+        list-style: circle !important;
+    }
+    .wmd-wrapper h1,
+    .wmd-wrapper h2,
+    .wmd-wrapper h3,
+    .wmd-wrapper h4,
+    .wmd-wrapper h5,
+    .wmd-wrapper h6 {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    .wmd-wrapper h2,
+    .wmd-wrapper h3,
+    .wmd-wrapper h4{
+        padding: 0px !important;
+    }
+    .wmd-wrapper h5{
+        letter-spacing: 0px !important;
+        text-transform: none !important;
+        font-size: 1em !important;
+    }
+    .wmd-wrapper h6{
+        font-size: 1em !important;
+        color: #777 !important;
+    }
+</style>
+
+<div class="wmd-wrapper"  id="id_a_content-wmd-wrapper">
+  <textarea  cols="40" id="id_a_content" name="a_content" rows="10" required>#### Manually load modules exmaple
+```
+	def get_html():
+		return &quot;Hello,World!&quot;
+```
+
+
+```html
+
+		&lt;script src=&quot;js/jquery.min.js&quot;&gt;&lt;/script&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;../lib/codemirror/codemirror.min.css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;../lib/codemirror/addon/dialog/dialog.css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;../lib/codemirror/addon/search/matchesonscrollbar.css&quot; /&gt;
+		&lt;script src=&quot;../lib/codemirror/codemirror.min.js&quot;&gt;&lt;/script&gt;
+
+		&lt;!-- Or, You can also one by one load CodeMirror modes &amp; addons. --&gt;
+		&lt;script src=&quot;../lib/codemirror/addons.min.js&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;../lib/codemirror/modes.min.js&quot;&gt;&lt;/script&gt;
+
+		&lt;script src=&quot;../lib/marked.min.js&quot;&gt;&lt;/script&gt;
+
+		&lt;!-- if setting previewCodeHighlight == true --&gt;
+		&lt;script src=&quot;../lib/prettify.min.js&quot;&gt;&lt;/script&gt;
+
+		&lt;!-- if setting flowchart == true, or sequence-diagram == true --&gt;
+		&lt;script src=&quot;../lib/raphael.min.js&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;../lib/underscore.min.js&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;../lib/sequence-diagram.min.js&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;../lib/flowchart.min.js&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;../lib/jquery.flowchart.min.js&quot;&gt;&lt;/script&gt;
+
+		&lt;!-- if setting tex == true --&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.1.1/katex.min.css&quot; /&gt;
+		&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.1.1/katex.min.js&quot;&gt;&lt;/script&gt;
+
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/editormd.css&quot; /&gt;
+		&lt;script src=&quot;../editormd.js&quot;&gt;&lt;/script&gt;
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			$(function() {
+				var testEditor = editormd(&quot;test-editormd&quot;, {
+					width  : &quot;90%&quot;,
+					height : 720,
+					autoLoadModules : false  // Manually load modules
+				});
+
+				testEditor.fullscreen(); // In Manually load mode, You can be synchronized using the member method.
+			});
+		&lt;/script&gt;
+```
+
+#### KaTeX test
+
+$$E = mc^2$$</textarea>
+</div>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        editormd("id_a_content-wmd-wrapper", {
+            watch: true, // 关闭实时预览
+            lineNumbers: false,
+            lineWrapping: false,
+            width: "100%",
+            height: 500,
+            placeholder: '',
+            // 当有多个mdeditor时，全屏后，其他mdeditor仍然显示，解决此问题。
+            onfullscreen : function() {
+                this.editor.css("border-radius", 0).css("z-index", 9999);
+            },
+            onfullscreenExit : function() {
+                this.editor.css({
+                    zIndex : 10,
+                    border : "1px solid rgb(221,221,221)"
+                })
+            },
+            syncScrolling: "single",
+            path: "/public/mdeditor/js/lib/",
+            // theme
+            theme : "default",
+            previewTheme : "default",
+            editorTheme : "default",
+
+            saveHTMLToTextarea: true, // editor.md 有问题没有测试成功
+            toolbarAutoFixed: true,
+            searchReplace: true,
+            emoji: true,
+            tex: true,
+            taskList: false,
+            flowChart: true,
+            sequenceDiagram: true,
+
+            // image upload
+            imageUpload: true,
+            imageFormats: ['jpg', 'JPG', 'jpeg', 'JPEG', 'gif', 'GIF', 'png', 'PNG', 'bmp', 'BMP', 'webp', 'WEBP'],
+            imageUploadURL: "/mdeditor/uploads/",
+            toolbarIcons: function () {
+                return ['undo', 'redo', '|', 'bold', 'del', 'italic', 'quote', 'ucwords', 'uppercase', 'lowercase', '|', 'h1', 'h2', 'h3', 'h5', 'h6', '|', 'list-ul', 'list-ol', 'hr', '|', 'link', 'reference-link', 'image', 'code', 'preformatted-text', 'code-block', 'table', 'datetime', 'emoji', 'html-entities', 'pagebreak', 'goto-line', '|', 'help', 'info', '||', 'preview', 'watch', 'fullscreen']
+            },
+            onload: function () {
+                console.log('onload', this);
+                //this.fullscreen();
+                //this.unwatch();
+                //this.watch().fullscreen();
+
+                //this.setMarkdown("#PHP");
+                //this.width("100%");
+                //this.height(480);
+                //this.resize("100%", 640);
+            }
+        });
+
+    });
+</script>
+
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-category">
+
+
+                <div>
+
+
+                        <label class="required" for="id_category">Category:</label>
+
+                            <div class="related-widget-wrapper">
+    <select name="category" required id="id_category">
+  <option value="">---------</option>
+
+  <option value="1" selected>Categroy object (1)</option>
+
+</select>
+
+        <a class="related-widget-wrapper-link change-related" id="change_id_category"
+            data-href-template="/admin/index/categroy/__fk__/change/?_to_field=c_id&amp;_popup=1"
+            title="Change selected categroy"><img src="/public/admin/img/icon-changelink.svg" alt="Change"/></a><a class="related-widget-wrapper-link add-related" id="add_id_category"
+            href="/admin/index/categroy/add/?_to_field=c_id&amp;_popup=1"
+            title="Add another categroy"><img src="/public/admin/img/icon-addlink.svg" alt="Add"/></a>
+
+</div>
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-auth_user">
+
+
+                <div>
+
+
+                        <label class="required" for="id_auth_user">Auth user:</label>
+
+                            <div class="related-widget-wrapper">
+    <select name="auth_user" required id="id_auth_user">
+  <option value="">---------</option>
+
+  <option value="1" selected>UserProfile object (1)</option>
+
+</select>
+
+
+
+</div>
+
+
+
+                </div>
+
+        </div>
+
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="submit-row">
+<input type="submit" value="Save" class="default" name="_save" />
+
+
+    <p class="deletelink-box"><a href="/admin/index/artical/13/delete/" class="deletelink">Delete</a></p>
+
+
+<input type="submit" value="Save and add another" name="_addanother" />
+<input type="submit" value="Save and continue editing" name="_continue" />
+</div>
+
+
+
+    <script type="text/javascript"
+            id="django-admin-form-add-constants"
+            src="/public/admin/js/change_form.js"
+            >
+    </script>
+
+
+
+
+<script type="text/javascript"
+        id="django-admin-prepopulated-fields-constants"
+        src="/public/admin/js/prepopulate_init.js"
+        data-prepopulated-fields="[]">
+</script>
+
+
+</div>
+</form></div>
+
+
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+{#<link rel="stylesheet" href="{% static '//blog/markdown/code.css' %}">#}
+    <link rel="stylesheet" href="{% static '/blog/css/code.css' %}">
+
+</head>
+<body>
+         {% if post.toc %}
+
+                 <h4 class=""> 目录</h4>
+                <div class="">
+                    <ol>
+                      {{ post.toc|safe }}
+                    </ol>
+              </div>
+
+      {% endif %}
+
+
+        <div id='wrap'>
+                     <div class="widget widget-content">
+                        <div id="content">  {{ post.a_content | safe}}</div>
+                        <div id="editormd"></div>
+                     </div>
+        </div>
+
+</body>
+
+<script type="text/javascript" src="{% static '/blog/js/linear.js' %}"></script>
+
+
+</html>

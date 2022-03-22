@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天室</title>
+</head>
+<body>
+<textarea name="" id="chat-log" cols="50" rows="10"></textarea>
+<br>
+<input type="text" id="input" size="50">
+<br>
+<input type="button" id="submit" value="发送">
+<script>
+    var roomName = '{{ room_name }}';
+
+    var chatSocket = new WebSocket('ws://'+window.location.host+'/ws/chat/'+roomName+'/');
+    chatSocket.onmessage = function(e){
+        var data = JSON.parse(e.data);
+        var message = data['message']
+        document.querySelector('#chat-log').value+=(message+'\n');
+    };
+
+
+    chatSocket.onclose = function(e){
+                console.log('websocket 断开: ' + e.code + ' ' + e.reason + ' ' + e.wasClean);
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#input').focus();
+    document.querySelector('#input').onkeyup = function(e){
+        if (e.keyCode===13){
+            document.querySelector('#submit').click();
+        }
+    };
+
+    document.querySelector('#submit').onclick = function(e){
+        var messageInputDom = document.querySelector('#input');
+        var message = messageInputDom.value;
+        chatSocket.send(JSON.stringify(
+            {'message':message}
+            )
+        );
+        messageInputDom.value = '';
+    };
+
+</script>
+</body>
+
+</html>

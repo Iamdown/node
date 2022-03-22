@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <link crossorigin="anonymous" media="all" integrity="" rel="stylesheet" href="{%  static  '/css/frameworks-03e2fd5bd74d065ddc15fc8e3cfbc528.css' %}">
+      <link crossorigin="anonymous" media="all" integrity="" rel="stylesheet" href="{% static '/css/site-8da471024fd1ec4aba5d7b71b7675661.css' %}">
+      <link crossorigin="anonymous" media="all" integrity="" rel="stylesheet" href="{%  static '/css/behaviors-f7f54e6a28e0f9b8cd6ca72ee1517672.css' %}">
+      <link crossorigin="anonymous" media="all" integrity="" rel="stylesheet" href="{%  static 'css/github-8f0058531aa9af1e35b50347e9c1dae6.css' %}">
+     <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" src="{%  static 'js/environment-0b3798e0.js' %}"></script>
+     <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" src="{%  static 'js/chunk-frameworks-a6008d2c.js' %}"></script>
+     <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" src="{% static 'js/chunk-vendor-2952c3cb.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" src="{%static 'js/behaviors-f84dd394.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-animate-on-scroll.js" data-src="{% static  'js/chunk-animate-on-scroll-b63b8d41.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-codemirror.js" data-src="{% static 'js/chunk-codemirror-f81284b4.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-color-modes.js" src="{% static '/js/chunk-color-modes-497204c5.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-contributions-spider-graph.js" data-src="{%  static '/js/chunk-contributions-spider-graph-ce46194a.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-drag-drop.js" data-src="{% static 'js/chunk-drag-drop-ea3fe848.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-edit.js" src="{% static 'js/chunk-edit-37ece2a8.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-emoji-picker-element.js" data-src="{% static 'js/chunk-emoji-picker-element-6a2a8c20.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-filter-input.js" data-src="{% static 'js/chunk-filter-input-0c0939e8.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-insights-graph.js" data-src="{%  static 'js/chunk-insights-graph-5f0b9074.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-jump-to.js" data-src="{% static 'js/chunk-jump-to-82e7a044.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-notification-list-focus.js" src="{% static 'js/chunk-notification-list-focus-b2ea5993.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-profile-pins-element.js" data-src="{%  static 'js/chunk-profile-pins-element-99ad0e3b.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-ref-selector.js" data-src="{%  static 'js/chunk-ref-selector-64b61f6c.js'  %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-responsive-underlinenav.js" src="{% static 'js/chunk-responsive-underlinenav-f72154b0.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-runner-groups.js" src="{%  static 'js/chunk-runner-groups-f56357b4.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-sortable-behavior.js" data-src="{%  static '/js/chunk-sortable-behavior-7c8abd32.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-toast.js" data-src="{% static 'js/chunk-toast-58af155f.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-tweetsodium.js" data-src="{%  static 'js/chunk-tweetsodium-be01c912.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" data-module-id="./chunk-user-status-submit.js" data-src="{%  static '/js/chunk-user-status-submit-158ec531.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" src="{% static 'js/unsupported-9ee6f785.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" src="{% static 'js/settings-ef0238a0.js' %}"></script>
+    <script crossorigin="anonymous" defer="defer" integrity="" type="application/javascript" src="{% static 'js/sessions-2a5e3616.js' %}"></script>
+    <meta name="viewport" content="width=device-width">
+    <title>Sign in to blog</title>
+    <meta name="description" content="GitHub is where people build software. More than 56 million people use GitHub to discover, fork, and contribute to over 100 million projects.">
+    <meta property="fb:app_id" content="1401488693436528">
+    <meta property="og:site_name" content="GitHub">
+    <meta property="og:title" content="Build software better, together">
+    <meta property="og:description" content="GitHub is where people build software. More than 56 million people use GitHub to discover, fork, and contribute to over 100 million projects.">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="620">
+    <meta property="twitter:site" content="github">
+    <meta property="twitter:site:id" content="13334762">
+    <meta property="twitter:creator" content="github">
+    <meta property="twitter:creator:id" content="13334762">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="GitHub">
+    <meta property="twitter:description" content="GitHub is where people build software. More than 56 million people use GitHub to discover, fork, and contribute to over 100 million projects.">
+    <meta property="twitter:image:width" content="1200">
+    <meta property="twitter:image:height" content="1200">
+  <meta name="request-id" content="B6F1:2982:108D7CF:120917B:607EAC36" data-pjax-transient="true"><meta name="html-safe-nonce" content="b0e5d91a3b094742e6e3d254991f98bc3be1af8e7044c71ee8311a38716d3da0" data-pjax-transient="true"><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS8iLCJyZXF1ZXN0X2lkIjoiQjZGMToyOTgyOjEwOEQ3Q0Y6MTIwOTE3Qjo2MDdFQUMzNiIsInZpc2l0b3JfaWQiOiI2MTA2MzExMjUyOTU3Mzc1NTQwIiwicmVnaW9uX2VkZ2UiOiJzZWEiLCJyZWdpb25fcmVuZGVyIjoiaWFkIn0=" data-pjax-transient="true"><meta name="visitor-hmac" content="0df00997a3be14390deec8b6c5a058dd1447e3ea591496bc361cf4a670690964" data-pjax-transient="true">
+  <meta name="github-keyboard-shortcuts" content="" data-pjax-transient="true">
+  <meta name="selected-link" value="/login" data-pjax-transient="">
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+  <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+  <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+  <meta name="octolytics-host" content="collector.githubapp.com"><meta name="octolytics-app-id" content="github"><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event">
+  <meta name="analytics-location-query-strip" content="true" data-pjax-transient="true">
+  <meta name="hostname" content="github.com">
+  <meta name="user-login" content="">
+  <meta name="expected-hostname" content="github.com">
+  <meta name="enabled-features" content="MARKETPLACE_PENDING_INSTALLATIONS,AUTOCOMPLETE_EMOJIS_IN_MARKDOWN_EDITOR,ACTIONS_CONCURRENCY_UI">
+  <meta http-equiv="x-pjax-version" content="6281d56343d051071aaff3761ead49584fe752a38c2e0af80ff55b68504112ce">
+
+  <style type="text/css" adt="123"></style>
+
+</head>
+
+  <body class="logged-out env-production page-responsive session-authentication"
+        style="word-wrap: break-word;" data-new-gr-c-s-loaded="14.1001.0">
+
+
+    <div class="position-relative js-header-wrapper ">
+                  <a href="https://github.com/login#start-of-content" class="px-2 py-4 color-bg-info-inverse color-text-white show-on-focus js-skip-to-content">Skip to content</a>
+            <span class="progress-pjax-loader width-full js-pjax-loader-bar Progress position-fixed">
+                <span style="background-color: #79b8ff;width: 0%;" class="Progress-item progress-pjax-loader-bar "></span>
+            </span>
+
+            <div id="unsupported-browser" class="unsupported-browser" hidden="">
+                      <div class="container-lg p-responsive clearfix d-flex flex-items-center py-2">
+                          <svg height="16" class="octicon octicon-alert mr-2 color-gray-7 hide-sm" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg>
+                        <div class="d-flex flex-auto flex-column flex-md-row">
+                          <div class="flex-auto min-width-0 mr-2" style="padding-top:1px">
+                            <span>GitHub no longer supports this web browser.</span>
+                            <a href="https://docs.github.com/articles/supported-browsers">
+                              Learn more about the browsers we support.
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+            </div>
+
+            <div class="header header-logged-out width-full pt-5 pb-4" role="banner">
+              <div class="container clearfix width-full text-center">
+                <a class="header-logo" href="https://github.com/" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+                      <svg height="48" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="48" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                </a>
+              </div>
+            </div>
+    </div>
+
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+
+
+
+  <include-fragment class="js-notification-shelf-include-fragment" data-base-src="https://github.com/notifications/beta/shelf"></include-fragment>
+  <div class="application-main " data-commit-hovercards-enabled="" data-discussion-hovercards-enabled="" data-issue-and-pr-hovercards-enabled="">
+      <main id="js-pjax-container" data-pjax-container="">
+          <div class="auth-form px-3" id="login">
+              <input type="hidden" name="ga_id" class="js-octo-ga-id-input">
+
+              <div class="auth-form-header p-0"><h5>Sign in to Bolg</h5></div>
+              <div data-pjax-replace="" id="js-flash-container" style="text-align: center ;color: green">{{ message }}<template class="js-flash-template"></template></div>
+              <div class="flash js-transform-notice" hidden="" >
+                <button class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
+                  <svg aria-label="Dismiss" class="octicon octicon-x" height="16" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path></svg>
+                </button>
+              </div>
+
+              <div class="auth-form-body mt-3">
+                      <input type="hidden" name="authenticity_token" value="#">
+                         <label for="login_field">
+                            Username or email address
+                          </label>
+                      <input type="text" name="login" id="login_field" class="form-control input-block" autocapitalize="off" autocorrect="off" autocomplete="username" autofocus="autofocus">
+                      <div class="position-relative">
+                        <label for="password">
+                          Password
+                        </label>
+                        <input type="password" name="password" id="password" class="form-control form-control input-block" autocomplete="current-password">
+                        <input type="hidden" name="trusted_device" id="trusted_device" class="form-control">
+                        <input type="hidden" class="js-webauthn-support" name="webauthn-support" value="supported">
+                        <input type="hidden" class="js-webauthn-iuvpaa-support" name="webauthn-iuvpaa-support" value="supported">
+                        <input type="hidden" name="return_to" id="return_to" class="form-control">
+                        <input type="hidden" name="allow_signup" id="allow_signup" class="form-control">
+                        <input type="hidden" name="client_id" id="client_id" class="form-control">
+                        <input type="hidden" name="integration" id="integration" class="form-control">
+                        <input type="text" name="required_field_8c66" hidden="hidden" class="form-control">
+                        <input type="hidden" name="timestamp" value="1618914359335" class="form-control">
+                        <input type="hidden" name="timestamp_secret" value="0f432822a3973445ffb5799c16d71fa6478a5496a4bc0e69ed5f8848690aed24" class="form-control">
+                        <input id="btn_obj" type="submit" name="commit" value="Sign in" class="btn btn-primary btn-block">
+                        <a class="label-link position-absolute top-0 right-0" tabindex="0" href="{% url 'user:forget' %}">Forgot password?</a>
+                  </div>
+              </div>
+
+                <p class="login-callout mt-3">
+                  New to Bolg?
+                  <a data-ga-click="Sign in, switch to sign up" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;sign in switch to sign up&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/login&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="" href=" {% url 'user:register' %}">Create an account</a>.
+                </p>
+          </div>
+      </main>
+  </div>
+
+
+
+
+  </body>
+
+
+
+<script src="{% static 'jq/jquery.js' %}"></script>
+<script src="{% static 'jq/md5.js' %}"> </script>
+<script>
+    $("#btn_obj").click(function () {
+           $('.btn.btn-primary.btn-block').val("Signing in…");
+            var userName = $("#login_field").val();
+			var userPwd = $("#password").val();
+			if (userPwd){
+                userPwd = hex_md5(userPwd);}
+            $.ajax({
+                url: '{% url 'user:signin' %}',
+                type: 'post',
+                data: {
+                    'user':userName,
+                    'pwd':userPwd,
+                },
+                success: function (response) {
+                    var res=JSON.parse(response);
+                    if (res.status){
+                        location.href= res.url;
+                    }else {
+                        $(".flash.js-transform-notice").removeAttr('hidden');
+                        $(".flash.js-transform-notice").css({'color':'red','text-align':'center'});
+                        $(".flash.js-transform-notice").text(response.error.user_error||response.error.pwd_error||response.error.login_error);
+
+                    }
+                }
+            })
+        });
+
+
+    //给登录按钮绑定回车键
+    $("body").keydown(function () {
+        if (event.keyCode == "13"){    //13是enter键的键码
+            $("#btn_obj").click();
+            //调用登录方法,在div中定义方法,或通过js绑定的方法都可以,我的登录方法就是通过jquery绑定的点击事件
+        }
+            }
+                );
+    </script>
+
+</html>

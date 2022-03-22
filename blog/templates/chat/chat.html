@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Rooms</title>
+</head>
+<body>
+    <div> 请输入聊天室名称:</div>
+    <br>
+    <input type="text" id="input" size="30" >
+    <br>
+    <input type="button" id="submit" value="进入">
+</body>
+
+<script>
+    document.querySelector('#input').focus();
+    document.querySelector('#input').onkeyup = function (e) {
+        if (e.keyCode ===13){
+            document.querySelector('#submit').click();
+        }
+    };
+    document.querySelector('#submit').onclick = function (e){
+        var rooName = document.querySelector('#input').value;
+        window.location.pathname = '/chat/' +rooName+'/';
+
+    };
+
+</script>
+</html>

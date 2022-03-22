@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
+  <head>
+    <meta charset="utf-8">
+  <link crossorigin="anonymous" media="all" integrity="sha512-B/jj6qcXmAwGUh/FG7mfpfFSb0lW1UpGiufFhzIeC+u3lXE5VDEJQzVxZ3gquw8xjZBNQ6CgWDSgCgjRzqPUgw==" rel="stylesheet" href="{% static '/css/frameworks-07f8e3eaa717980c06521fc51bb99fa5.css'  %}" />
+
+
+
+
+
+
+
+
+      <link crossorigin="anonymous" media="all" integrity="" rel="stylesheet" href="{%  static '/css/behaviors-f7f54e6a28e0f9b8cd6ca72ee1517672.css' %}">
+
+
+
+
+  </head>
+
+
+
+
+
+
+  <body class="logged-out env-production page-responsive session-authentication" style="word-wrap: break-word;">
+
+    <div class="position-relative js-header-wrapper ">
+      <a href="#start-of-content" class="px-2 py-4 color-bg-info-inverse color-text-white show-on-focus js-skip-to-content">Skip to content</a>
+      <span data-view-component="true" class="progress-pjax-loader width-full js-pjax-loader-bar Progress position-fixed">
+    <span style="background-color: #79b8ff;width: 0%;" data-view-component="true" class="Progress-item progress-pjax-loader-bar"></span>
+</span>
+
+        <div class="header header-logged-out width-full pt-5 pb-4" role="banner">
+  <div class="container clearfix width-full text-center">
+    <a class="header-logo" href="" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+      <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="48" width="48" class="octicon octicon-mark-github">
+    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+</svg>
+    </a>
+  </div>
+</div>
+    </div>
+
+
+  <div
+    class="application-main "
+    data-commit-hovercards-enabled
+    data-discussion-hovercards-enabled
+    data-issue-and-pr-hovercards-enabled
+  >
+      <main id="js-pjax-container" data-pjax-container>
+
+  <div class="container-sm px-3" >
+
+
+
+
+      <div class="auth-form-header p-0">
+        <h1>Reset your password</h1>
+      </div>
+      <div data-pjax-replace id="js-flash-container">
+
+
+  <template class="js-flash-template">
+    <div class="flash flash-full  {{ className }}">
+  <div class="container-lg px-2" >
+    <button class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
+      <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class="octicon octicon-x">
+    <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
+</svg>
+    </button>
+
+      <div>{{ message }}</div>
+
+  </div>
+</div>
+  </template>
+</div>
+
+      <div class="auth-form-body mt-3">
+           <div class="flash js-transform-notice" hidden="" >
+                <button class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
+                  <svg aria-label="Dismiss" class="octicon octicon-x" height="16" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path></svg>
+                </button>
+              </div>
+
+          <label for="email_field">Enter your user account's verified email address and we will send you a password reset link.</label>
+        <input type="text" name="username" id="email_field" class="form-control input-block" autofocus="autofocus" placeholder="Enter your username " />
+        <input type="text" name="verifycode" id="verifycode" class="form-control input-block" autofocus="autofocus" placeholder="Enter your verifycode"  hidden="hidden"/>
+          <input type="password" name="password" id="password" class="form-control input-block" autofocus="autofocus" placeholder="Enter your password"  hidden="hidden"/>
+<div class="my-3" >
+    <h2 class="f4 mb-3" id="tips">{{ tips }}</h2>
+
+
+
+</div>
+
+        <input
+          name="commit"
+          type="submit"
+
+          class="btn btn-primary btn-block js-octocaptcha-form-submit"
+
+        >
+      </div>
+
+
+
+      <input type="text" name="required_field_1b78" hidden="hidden" class="form-control" /><input type="hidden" name="timestamp" value="1623768199401" class="form-control" /><input type="hidden" name="timestamp_secret" value="bf9ccb476066f6f66579dbb1f9ebfda6c944c25270c1c64f063ed7aff087e5ab" class="form-control" />
+  </div>
+
+      </main>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  </body>
+
+<script src="{% static 'jq/jquery.js' %}"></script>
+<script src="{% static 'jq/md5.js' %}"> </script>
+  <script>
+
+      $(".btn.btn-primary.btn-block.js-octocaptcha-form-submit").click(function () {
+         var  username  =$("#email_field").val();
+         var vcode = $("#verifycode").val();
+         var password= $('#password').val();
+         if (password){
+                password = hex_md5(password);}
+          $.ajax({
+              url:'{% url 'user:forget' %}',
+              type:"POST",
+              data:{"username":username,
+              "vcode":vcode,
+              "password":password},
+              success:function (res) {
+                  var response=JSON.parse(res);
+                    if (response.status===true){
+                        console.log("heell");
+                        $('.flash.js-transform-notice').css({'color':'green','text-align':'center'});
+                        $('#verifycode').removeAttr('hidden');
+                        $('#password').removeAttr('hidden');
+
+                    }else if (response.status===false){
+                         $('.flash.js-transform-notice').css({'color':'red','text-align':'center'});
+
+                    }
+                    $('.flash.js-transform-notice').removeAttr('hidden');
+                     $('.flash.js-transform-notice').text(response.tips);
+
+              }
+
+
+          })
+
+
+      })
+  </script>
+
+
+</html>
+

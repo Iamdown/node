@@ -1,0 +1,181 @@
+{% load static  %}
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>register</title>
+		<link rel="stylesheet" type="text/css" href="{% static '/blog/bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}"/>
+		<style type="text/css">
+            body{
+                background-color: #0d1117;
+                color: #ffffff;
+            }
+		    .form{
+			border-radius: 50px;
+            background-image: linear-gradient(60deg, #161b22 0%, #161b22 100%);
+            border: 1px solid;
+            border-color: #29323c;
+		    }
+
+            a:hover{
+                text-decoration: none;
+                color: red;
+            }
+		</style>
+	</head>
+
+	<body>
+		<div class="container" style="margin-top: 180px;">
+			<form id="addUserForm" class="col-sm-offset-4 col-sm-4 col-sm-offset-4 form form-horizontal" action="#" target="_blank" method="post">
+
+				<h4 class="text-center">用户注册</h4>
+                <div class="flash js-transform-notice"  style="color: red ; text-align: center" >{{ message }}</div>
+				<!--把标签和控件放在一个from-group的div中-->
+				<div class="form-group">
+					<label for="username" class="col-sm-4 control-label">账<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>号</label>
+					<div class="col-sm-7">
+						<input class="form-control" type="text" name="userName" id="username" placeholder="由2-12个字符组成" />
+					</div>
+					<div class="col-sm-1">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="psw" class="col-sm-4 control-label">密<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>码</label>
+					<div class="col-sm-7">
+						<input class="form-control" type="password" name="userPassword" id="password" placeholder="由6-18个字符组成" />
+					</div>
+					<div class="col-sm-1">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="psw" class="col-sm-4 control-label">确认密码</label>
+					<div class="col-sm-7">
+						<input class="form-control" type="password" name="userPassword2" id="password2" placeholder="再次确认密码" />
+					</div>
+					<div class="col-sm-1">
+					</div>
+				</div>
+				<div class="form-group">
+	                <label for="email" class="col-sm-4 control-label">邮<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>箱</label>
+	                <div class="col-sm-7">
+	                	<input  class="form-control" type="email" name="userEmail" id="email"  placeholder="例如:123@123.com">
+	                </div>
+	                <div class="col-sm-1">
+					</div>
+	            </div>
+				<button type="submit" id="submitdata" class="btn btn-success col-sm-12" onclick="submitForm()" style="font-weight: bold;font-size: medium">注 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span> 册</button>
+            	<div class="text-right" style="margin-bottom: 20px;">
+                	<a href="{% url 'user:signin' %}" style="float: left;padding-left: 125px;font-size:medium;font-weight: bold">已有账号？立即登录</a>
+            	</div>
+			</form>
+		</div>
+
+		<script src="{% static  '/blog/vendor/jquery/jquery.min.js' %} "></script>
+		<script src="{% static  '/blog/bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+		<script src="{% static '/blog/bootstrap/bootstrap-3.3.7-dist/js/bootstrapValidator.min.js' %}"></script>
+		<script src="{% static  '/blog/bootstrap/bootstrap-3.3.7-dist/js/jquery-form.js'%}"></script>
+
+	</body>
+
+    <script>
+        //注册表单验证
+$(function () {
+	//表单的id
+    $('#addUserForm').bootstrapValidator({
+
+　　　  message: 'This value is not valid',
+            feedbackIcons: {
+                　　　　　　　　valid: 'glyphicon glyphicon-ok',
+                　　　　　　　　invalid: 'glyphicon glyphicon-remove',
+                　　　　　　　　validating: 'glyphicon glyphicon-refresh'
+            　　　　　　　　   },
+            fields: {
+                userName: {
+                    message: '用户名验证失败',
+                    validators: {
+                        notEmpty: {
+                            message: '用户名不能为空'
+                        },stringLength: {
+	                        min: 2,
+	                        max: 12,
+	                        message: '2-12位字母或数字'
+	                    }
+                    }
+                },
+                userPassword: {
+                	validators: {
+	                    notEmpty: {
+	                        message: '密码不能为空'
+	                    },stringLength: {
+	                        min: 6,
+	                        max: 18,
+	                        message: '6-18位字母或数字'
+	                    },identical: {
+	                        field: 'userPassword2',
+	                        message: '请保持密码一致'
+	                    }
+	                }
+                },
+                userPassword2: {
+                	validators: {
+	                    notEmpty: {
+	                        message: '请再次输入密码'
+	                    },stringLength: {
+	                        min: 6,
+	                        max: 18,
+	                        message: '6-18位字母或数字'
+	                    },identical: {
+	                        field: 'userPassword',
+	                        message: '请保持密码一致'
+	                    }
+	                }
+                },
+                userEmail: {
+                    validators: {
+	                    notEmpty: {
+	                        message: '邮箱不能为空'
+	                    },
+	                    emailAddress: {
+	                        message: '非法邮箱格式'
+	                    }
+	                }
+                }
+
+            }
+    });
+
+});
+
+    </script>
+
+
+    <script src="{% static 'jq/md5.js' %}"> </script>
+
+     <script>
+
+        function submitForm(){
+ var theForm = document.forms[0];
+
+    if (theForm.username.value==null){
+          console.log("username cannot null");
+          return
+    }
+
+    if(theForm.password.value !=null && theForm.password2.value !=null && theForm.password.value===theForm.password2.value) {
+        theForm.target = "_parent";
+        theForm.password.value = hex_md5(theForm.password.value);
+        theForm.password2.value = hex_md5(theForm.password2.value);
+        console.log(theForm.password.value);
+        theForm.submit();
+    }
+	else if (theForm.email.value===null){
+            theForm.email.append('disable')
+     }
+
+}
+
+
+    </script>
+
+</html>

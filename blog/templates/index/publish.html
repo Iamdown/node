@@ -1,0 +1,465 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<title>Add artical | Django site admin</title>
+    {% include 'index/head.html' %}
+<link rel="stylesheet" type="text/css" href="/public/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/public/admin/css/forms.css" />
+
+
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<link href="/public/mdeditor/css/editormd.css" type="text/css" media="all" rel="stylesheet" />
+<script type="text/javascript" src="/public/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/public/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/public/admin/js/core.js"></script>
+<script type="text/javascript" src="/public/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/public/admin/js/actions.js"></script>
+<script type="text/javascript" src="/public/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/public/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/public/admin/js/vendor/xregexp/xregexp.js"></script>
+<script type="text/javascript" src="/public/admin/js/calendar.js"></script>
+<script type="text/javascript" src="/public/admin/js/admin/DateTimeShortcuts.js"></script>
+<script type="text/javascript" src="/public/mdeditor/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/mdeditor/js/editormd.min.js"></script>
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/admin/css/responsive.css" />
+
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+
+    <style>
+        body,.CodeMirror-scroll,.editormd-preview,.editormd-preview,.editormd-container-mask,.editormd-preview-container, .editormd-html-preview {background-color:#0d1117;color:white}
+        .required label, label.required, .editormd.CodeMirror pre {font-weight: bold;color: #c9d1d9;}
+        .CodeMirror-activeline-background.CodeMirror-linebackground{background: #0c5460}
+        div.breadcrumbs{background-color: #0d1117}
+
+
+
+
+         .form-row,
+         .editormd-toolbar-container,
+         input[type=text],
+         input[type=password],
+         input[type=email],
+         input[type=url],
+         input[type=number],
+         input[type=tel],
+         textarea,
+         select,
+         .vTextField ,
+         .submit-row,
+         .editormd,
+         .editormd-menu > li > a{
+            border: 0.5px solid #30363d;
+        }
+
+
+          .editormd-toolbar {border-bottom: 1px solid #30363d;}
+          .editormd .CodeMirror,.editormd-menu > li.divider{border-right: 1px solid #30363d}
+
+
+          .module,
+          .submit-row,
+          .CodeMirror .cm-s-default,
+          .editormd-toolbar-container,
+          .wmd-wrapper.editormd.editormd-vertical.editormd-theme-default{background: #161b22}
+
+        input{background-color: #0d1117;color:white}
+        select{background-color: #30363d}
+
+
+
+    </style>
+</head>
+
+
+<body class=" app-index model-artical change-form"
+  data-admin-utc-offset="28800">
+
+<!-- Container -->
+<div id="container">
+
+
+    <!-- Header -->
+    {% include 'index/header.html' %}
+    <!-- END Header -->
+
+<div class="breadcrumbs">
+<a href="/admin/">Home</a>
+&rsaquo; <a href="/admin/index/">Index</a>
+&rsaquo; <a href="/admin/index/artical/">Articals</a>
+&rsaquo; Add artical
+</div>
+
+
+
+
+
+
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        <h1>Add artical</h1>
+        <div id="content-main">
+
+
+
+<form enctype="multipart/form-data" action="" method="post" id="artical_form" novalidate><input type='hidden' name='csrfmiddlewaretoken' value='rgI8YDFIEjFK2TenF3XUoTxTjN5LEslsOg2ZN9yvkV62Ko7sUpSg3JWkbppD6kez' />
+<div>
+
+
+
+
+
+
+
+  <fieldset class="module aligned ">
+
+
+
+        <div class="form-row field-a_title">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_title">Title:</label>
+
+                            <input type="text" name="a_title" class="vTextField" maxlength="300" required id="id_a_title" />
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_auth_name">
+
+
+                <div>
+
+
+                        <label for="id_a_auth_name">Auth name:</label>
+
+                            <input type="text" name="a_auth_name" value="{{ request.user.username }}" class="vTextField" maxlength="50" id="id_a_auth_name" />
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_publish_date">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_publish_date">Publish date:</label>
+
+                            <input type="text" name="a_publish_date" class="vDateField" size="10" required id="id_a_publish_date" />
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_publish_time">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_publish_time">Publish time:</label>
+
+                            <input type="text" name="a_publish_time" class="vTimeField" size="8" required id="id_a_publish_time" />
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_content">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_content">Artcial content:</label>
+
+
+<style type="text/css">
+    .wmd-wrapper  ul {
+        margin-left: 0px !important;
+    }
+    .wmd-wrapper ul li{
+        list-style: disc !important;
+    }
+    .wmd-wrapper ul ul li{
+        list-style: circle !important;
+    }
+    .wmd-wrapper h1,
+    .wmd-wrapper h2,
+    .wmd-wrapper h3,
+    .wmd-wrapper h4,
+    .wmd-wrapper h5,
+    .wmd-wrapper h6 {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    .wmd-wrapper h2,
+    .wmd-wrapper h3,
+    .wmd-wrapper h4{
+        padding: 0px !important;
+    }
+    .wmd-wrapper h5{
+        letter-spacing: 0px !important;
+        text-transform: none !important;
+        font-size: 1em !important;
+    }
+    .wmd-wrapper h6{
+        font-size: 1em !important;
+        color: #777 !important;
+    }
+</style>
+
+<div class="wmd-wrapper"  id="id_a_content-wmd-wrapper">
+  <textarea  cols="40" id="id_a_content" name="a_content" rows="10" required></textarea>
+</div>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        editormd("id_a_content-wmd-wrapper", {
+            watch: true, // 关闭实时预览
+            lineNumbers: false,
+            lineWrapping: false,
+            width: "100%",
+            height: 500,
+            placeholder: '',
+            // 当有多个mdeditor时，全屏后，其他mdeditor仍然显示，解决此问题。
+            onfullscreen : function() {
+                this.editor.css("border-radius", 0).css("z-index", 9999);
+            },
+            onfullscreenExit : function() {
+                this.editor.css({
+                    zIndex : 10,
+                    border : "1px solid rgb(221,221,221)"
+                })
+            },
+            syncScrolling: "single",
+            path: "/public/mdeditor/js/lib/",
+            // theme
+            theme : "default",
+            previewTheme : "default",
+            editorTheme : "default",
+
+            saveHTMLToTextarea: true, // editor.md 有问题没有测试成功
+            toolbarAutoFixed: true,
+            searchReplace: true,
+            emoji: true,
+            tex: true,
+            taskList: false,
+            flowChart: true,
+            sequenceDiagram: true,
+
+            // image upload
+            imageUpload: true,
+            imageFormats: ['jpg', 'JPG', 'jpeg', 'JPEG', 'gif', 'GIF', 'png', 'PNG', 'bmp', 'BMP', 'webp', 'WEBP'],
+            imageUploadURL: "/mdeditor/uploads/",
+            toolbarIcons: function () {
+                return ['undo', 'redo', '|', 'bold', 'del', 'italic', 'quote', 'ucwords', 'uppercase', 'lowercase', '|', 'h1', 'h2', 'h3', 'h5', 'h6', '|', 'list-ul', 'list-ol', 'hr', '|', 'link', 'reference-link', 'image', 'code', 'preformatted-text', 'code-block', 'table', 'datetime', 'emoji', 'html-entities', 'pagebreak', 'goto-line', '|', 'help', 'info', '||', 'preview', 'watch', 'fullscreen']
+            },
+            onload: function () {
+                console.log('onload', this);
+                //this.fullscreen();
+                //this.unwatch();
+                //this.watch().fullscreen();
+
+                //this.setMarkdown("#PHP");
+                //this.width("100%");
+                //this.height(480);
+                //this.resize("100%", 640);
+            }
+        });
+
+    });
+</script>
+
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-category">
+
+
+                <div>
+
+
+                        <label class="required" for="id_category">Category:</label>
+
+                            <div class="related-widget-wrapper">
+    <select name="category" required id="id_category">
+  <option value="" selected>---------</option>
+
+  <option value="1">Categroy object (1)</option>
+
+</select>
+
+        <a class="related-widget-wrapper-link change-related" id="change_id_category"
+            data-href-template="/admin/index/categroy/__fk__/change/?_to_field=c_id&amp;_popup=1"
+            title="Change selected categroy"><img src="/public/admin/img/icon-changelink.svg" alt="Change"/></a><a class="related-widget-wrapper-link add-related" id="add_id_category"
+            href="/admin/index/categroy/add/?_to_field=c_id&amp;_popup=1"
+            title="Add another categroy"><img src="/public/admin/img/icon-addlink.svg" alt="Add"/></a>
+
+</div>
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-auth_user">
+
+
+                <div>
+
+
+                        <label class="required" for="id_auth_user">Auth user:</label>
+
+                            <div class="related-widget-wrapper">
+    <select name="auth_user" required id="id_auth_user">
+  <option value="" selected>---------</option>
+
+  <option value="1">UserProfile object (1)</option>
+
+</select>
+
+
+
+</div>
+
+
+
+                </div>
+
+        </div>
+
+</fieldset>
+
+
+
+
+
+<div class="submit-row">
+<input
+{#        type="submit"#}
+       value="Save"
+       class="default"
+       name="_save"  id="publish"/>
+
+
+<input type="submit" value="Save and add another" name="_addanother" />
+<input type="submit" value="Save and continue editing" name="_continue" />
+</div>
+
+
+
+    <script type="text/javascript"
+            id="django-admin-form-add-constants"
+            src="/public/admin/js/change_form.js"
+
+                data-model-name="artical"
+            >
+    </script>
+
+
+
+
+<script type="text/javascript"
+        id="django-admin-prepopulated-fields-constants"
+        src="/public/admin/js/prepopulate_init.js"
+        data-prepopulated-fields="[]">
+</script>
+
+
+</div>
+</form></div>
+
+
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+</body>
+
+{#<script>#}
+{##}
+{#    window.onload= function (){#}
+{#        var  publish = document.getElementById("publish");#}
+{#        publish.onclick = function (){#}
+{#           var content = [...document.querySelectorAll('pre>span')].map(v => v.textContent)#}
+{#                     alert(content)#}
+{#        }#}
+{#    }#}
+{#  </script>#}
+
+<script src="{% static 'blog/js/jquery.js' %}"></script>
+<script>
+    $("#publish").click(function () {
+
+        $("#publish").val("publish…");
+        var title = $("#id_a_title").val();
+        var auth_name = $("#id_a_auth_name").val();
+        var publish_date = $("#id_a_publish_date").val();
+        var publish_time = $("#id_a_publish_time").val();
+        {#var content = [...document.querySelectorAll('pre>span')].map(v => v.textContent)#}
+        var content = [...$("pre > span")].map(v => v.textContent)
+
+        var astr = ''
+        for (var  i=0;i<content.length;i++) {
+            astr += content[i].toString();
+            astr += '\n';
+
+        }
+
+
+            $.ajax({
+                url: '{% url 'index:publish' %}',
+                type: 'post',
+                data: {
+                    'title':title,
+                    'auth_name':auth_name,
+                    'publish_date':publish_date,
+                    'publish_time':publish_time,
+                    'content':astr,
+                },
+
+                success: function (response) {
+                    var res=JSON.parse(response);
+                    if (res.status){
+                        location.href= "http://127.0.0.1/blog";
+                    }else {
+                            alert("faile no response")
+                    }
+                }
+            })
+        alert("添加成功!",content)
+        });
+
+
+</script>
+
+</html>

@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- head 标签元素 -->
+{#    {% include 'index/video_head.html' %}#}
+    <!--end head 标签元素-->
+    {% include 'index/head.html' %}
+    {% load static %}
+          <link rel="stylesheet" href="{% static '/blog/css/comment.css' %}">
+    <link rel="stylesheet" href="{% static '/blog/css/detail.css' %}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>详情页</title>
+    <style>
+
+
+.comment_show{
+            margin-top: 5%;
+           margin-left: 9%;
+           width: 60%;
+    {#background:#0d419d;#}
+
+        }
+
+.comment{margin-left:60px;}
+
+        .q9uorilb {
+    display: inline-block;
+}
+        .oi9244e8 {
+    margin-right: 8px;
+}
+        .h676nmdw {
+    margin-left: 8px;
+}
+        li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+        .gpro0wi8:hover {
+    text-decoration: underline;
+}
+
+.q9uorilb {
+    display: inline-block;
+}
+.nhd2j8a9 {
+    cursor: pointer;
+}
+.n3ffmt46 {
+    font-weight: bold;
+}
+
+.l9j0dhe7 {
+    position: relative;
+}
+
+div {
+    display: block;
+}
+
+
+.nhd2j8a9 {
+    cursor: pointer;
+}
+.n3ffmt46 {
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+.sc6m8p17 {
+    left: 71px;
+}
+.pmk7jnqg {
+    position: absolute;
+}
+.dsl5tyj5 {
+    width: 2px;
+}
+.datstx6m {
+    height: 100%;
+}
+.b3i9ofy5 {
+    background-color: #21262d ;
+}
+
+
+
+
+.pmk7jnqg {
+    position: absolute;
+}
+.ns4ygwem {
+    border-bottom-left-radius: 10px;
+}
+.mmi0k12o {
+    left: 30px;
+}
+.jnigpg78 {
+    height: 20px;
+}
+.b73ngqbp {
+    width: 24px;
+}
+.tpcyxxvw {
+    border-bottom-width: 2px;
+}
+.s44p3ltw {
+    border-bottom-style: solid;
+}
+.qr6iehes {
+    border-top-color:  #0b9e89;
+}
+.pw8ppx28 {
+    border-right-color:  #0b9e89;
+}
+.mk2mc5f4 {
+    border-left-style: solid;
+}
+.kywkl1fr {
+    border-left-color:  #0b9e89;
+}
+.k973klho {
+    border-bottom-color: #0b9e89;
+}
+.k0bpgpbk {
+    border-left-width: 2px;
+}
+
+
+div {
+    display: block;
+}
+
+
+ul {
+    margin: 0;
+    padding: 0;
+    display: block;
+    padding-inline-start:40px;
+    list-style-type:none;
+}
+
+
+.myreply,.commit_comment{
+    width: 60%;
+    padding-left:18%;
+}
+
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+</style>
+</head>
+
+
+
+
+<body>
+{% include 'index/header.html' %}
+<div content="parent">
+    <!-- > 目录<-->
+        {% block toc %}
+            {% if post.toc %}
+                <div  class="son1">
+                     <h4 class="widget-title"> 目录</h4>
+                    <div class="toc">
+                        <ol>
+                          {{ post.toc|safe }}
+                        </ol>
+                  </div>
+                </div>
+          {% endif %}
+        {% endblock toc %}
+
+        <div id='wrap'>
+             <!--  正文内容 -->
+             <div class="widget widget-content">
+                <div id="content"> {{ post.a_content | safe}}</div>
+                <div id="editormd"></div>
+             </div>
+        </div>
+
+{#        {% include 'index/video.html' %}#}
+
+
+
+<!-- >一级评论<-->
+<br><br><br><br><br><br><br><br> <br><br><br><br>
+<div class="commit_comment">
+<div class="ecm0bbzt hv4rvrfc e5nlhep0 dati1w0a j83agx80 btwxx1t3 lzcic4wl"><div class="nqmvxvec s45kfl79 emlxlaya bkmhp75w spb7xbtv a8c37x1j fv0vnmcu rs0gx3tq l9j0dhe7"><div aria-hidden="true" class="oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql pq6dq46d btwxx1t3 abiwlrkh p8dawk7l lzcic4wl" role="button" tabindex="-1"><div class="q9uorilb l9j0dhe7 pzggbiyp du4w35lb"><svg aria-hidden="true" class="pzggbiyp" data-visualcompletion="ignore-dynamic" role="none" style="height: 32px; width: 32px;"><mask id="jsc_c_aa"><circle cx="16" cy="16" fill="white" r="16"></circle></mask><g mask="url(#jsc_c_aa)"><image x="0" y="0" height="100%" preserveAspectRatio="xMidYMid slice" width="100%" xlink:href="https://scontent-frx5-1.xx.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p64x64&amp;_nc_cat=1&amp;ccb=1-5&amp;_nc_sid=7206a8&amp;_nc_ohc=7nKGH13yY-EAX-0j0xB&amp;_nc_ht=scontent-frx5-1.xx&amp;oh=00_AT-xIaoX7fzVIvubbcm_dPUAnahgSFl7p50xV8JJv9DlbA&amp;oe=624FDC78" style="height: 32px; width: 32px;"></image><circle class="mlqo0dh0 georvekb s6kb5r3f" cx="16" cy="16" r="16"></circle></g></svg></div><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3 s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore"></div></div></div><div class="rj1gh0hx buofh1pr ni8dbmo4 stjgntxs rz4wbd8a" ><div class="j83agx80 btwxx1t3"><form class="o6r2urh6 l9j0dhe7 b3i9ofy5 e72ty7fz qlfml3jp inkptoze qmr60zad rt8b4zig n8ej3o3l agehan2d sk4xxmp2 j83agx80 buofh1pr bkfpd7mw" role="presentation"><div class="m9osqain b1v8xokw ltmttdrg g0qnabr5 r2ndix9n o6r2urh6 mg4g778l buofh1pr g5gj957u jq4qci2q ni8dbmo4 stjgntxs cxgpxx05 d1544ag0 sj5x9vvc tw6a2znq" data-visualcompletion="ignore"><div class="l9j0dhe7"><div id="first_commit_comment" aria-label="Write a comment" class="oo9gr5id lzcic4wl l9j0dhe7 gsox5hk5" contenteditable="true" spellcheck="true" style="user-select: text; white-space: pre-wrap; overflow-wrap: break-word;" data-lexical-editor="true" role="textbox" tabindex="-1" ><p class="hcukyx3x oygrvhab cxmmr5t8 kvgmc6g5" id="first_comment" contenteditable="true"><br></p></div><div class="m9osqain ni8dbmo4 stjgntxs hzruof5a pmk7jnqg j9ispegn ltmttdrg kr520xx4 abiwlrkh g0qnabr5 k4urcfbm">Write a comment…</div></div></div><ul class="fop5sh7t cgat1ltu tv7at329 j83agx80 c4hnarmi bp9cbjyn"><li class="ggphbty4 fv0vnmcu q9uorilb"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-label="Insert an emoji" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/B9lFaDeBR3H.png&quot;); background-position: 0px -404px; background-size: 25px 635px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span></li><li class="ggphbty4 fv0vnmcu q9uorilb"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-label="Attach a photo or video" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/B9lFaDeBR3H.png&quot;); background-position: 0px -353px; background-size: 25px 635px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span><input accept="video/*,  video/x-m4v, video/webm, video/x-ms-wmv, video/x-msvideo, video/3gpp, video/flv, video/x-flv, video/mp4, video/quicktime, video/mpeg, video/ogv, .ts, .mkv, image/*, image/heic, image/heif" class="mkhogb32" type="file"></li><li class="ggphbty4 fv0vnmcu q9uorilb"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-label="Comment with a GIF" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/B9lFaDeBR3H.png&quot;); background-position: 0px -421px; background-size: 25px 635px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span></li><li class="ggphbty4 fv0vnmcu q9uorilb"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-label="Comment with a sticker" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/B9lFaDeBR3H.png&quot;); background-position: 0px -472px; background-size: 25px 635px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span></li></ul></form></div><div class="buofh1pr"></div><div class="buofh1pr"></div></div></div>
+    </div>
+
+
+
+
+      <!-- > 评论列表<-->
+    <div class="comment_show">
+        <div class="comment_list">
+        </div>
+    </div>
+
+
+<!-- > 底部回复输入框<-->
+    <div class="myreply" id="inputbox"  style="  display: none;">
+        <div class="ecm0bbzt hv4rvrfc sj5x9vvc scb9dxdr j83agx80 btwxx1t3 lzcic4wl"><div class="nqmvxvec s45kfl79 emlxlaya bkmhp75w spb7xbtv a8c37x1j fv0vnmcu l9j0dhe7 qjjbsfad"><div aria-hidden="true" class="oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql pq6dq46d btwxx1t3 abiwlrkh p8dawk7l lzcic4wl" role="button" tabindex="-1"><div class="q9uorilb l9j0dhe7 pzggbiyp du4w35lb"><svg aria-hidden="true" class="pzggbiyp" data-visualcompletion="ignore-dynamic" role="none" style="height: 24px; width: 24px;"><mask id="jsc_c_md"><circle cx="12" cy="12" fill="white" r="12"></circle></mask><g mask="url(#jsc_c_md)"><image x="0" y="0" height="100%" preserveAspectRatio="xMidYMid slice" width="100%" xlink:href="https://scontent-frx5-2.xx.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p48x48&_nc_cat=1&ccb=1-5&_nc_sid=7206a8&_nc_ohc=7nKGH13yY-EAX8t6p3U&_nc_ht=scontent-frx5-2.xx&oh=00_AT9ymjyRXZeiszGa6xl3E4Qt-SJPiybXI9DcQgjUgpLxAA&oe=624BE7F8" style="height: 24px; width: 24px;"></image><circle class="mlqo0dh0 georvekb s6kb5r3f" cx="12" cy="12" r="12"></circle></g></svg></div><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore"></div></div></div><div class="rj1gh0hx buofh1pr ni8dbmo4 stjgntxs rz4wbd8a"><div class="j83agx80 btwxx1t3"><form class="o6r2urh6 l9j0dhe7 b3i9ofy5 e72ty7fz qlfml3jp inkptoze qmr60zad rt8b4zig n8ej3o3l agehan2d sk4xxmp2 j83agx80 buofh1pr bkfpd7mw" role="presentation"><div class="m9osqain b1v8xokw ltmttdrg g0qnabr5 r2ndix9n o6r2urh6 mg4g778l buofh1pr g5gj957u jq4qci2q ni8dbmo4 stjgntxs cxgpxx05 d1544ag0 sj5x9vvc tw6a2znq" data-visualcompletion="ignore"><div class="l9j0dhe7"><div aria-label="Reply to MR Fishing 1926" class="oo9gr5id lzcic4wl l9j0dhe7 gsox5hk5 notranslate" contenteditable="true" spellcheck="true" data-lexical-editor="true" style="user-select: text; white-space: pre-wrap; overflow-wrap: break-word;" role="textbox"><p class="hcukyx3x oygrvhab cxmmr5t8 kvgmc6g5"  contenteditable="true" spellcheck="true"
+    role="textbox"><span class="bnpdmtie diy96o5h" spellcheck="false" data-lexical-text="true"  id="reply_to_username"></span><span data-lexical-text="ture" id="reply_comment"></span><br></p></div><div class="m9osqain ni8dbmo4 stjgntxs hzruof5a pmk7jnqg j9ispegn ltmttdrg kr520xx4 abiwlrkh g0qnabr5 k4urcfbm" id=""></div></div></div><ul class="fop5sh7t cgat1ltu tv7at329 j83agx80 c4hnarmi bp9cbjyn"><li class="ggphbty4 fv0vnmcu q9uorilb"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-label="Insert an emoji" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/B9lFaDeBR3H.png&quot;); background-position: 0px -404px; background-size: 25px 635px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span></li><li class="ggphbty4 fv0vnmcu q9uorilb"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-label="Attach a photo or video" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/B9lFaDeBR3H.png&quot;); background-position: 0px -353px; background-size: 25px 635px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span><input accept="video/*,  video/x-m4v, video/webm, video/x-ms-wmv, video/x-msvideo, video/3gpp, video/flv, video/x-flv, video/mp4, video/quicktime, video/mpeg, video/ogv, .ts, .mkv, image/*, image/heic, image/heif" class="mkhogb32" type="file"></li><li class="ggphbty4 fv0vnmcu q9uorilb"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-label="Comment with a GIF" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/B9lFaDeBR3H.png&quot;); background-position: 0px -421px; background-size: 25px 635px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span></li><li class="ggphbty4 fv0vnmcu q9uorilb"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-label="Comment with a sticker" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/B9lFaDeBR3H.png&quot;); background-position: 0px -472px; background-size: 25px 635px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span></li></ul></form></div><div class="buofh1pr"></div><div class="buofh1pr"></div></div>
+            <a class='x' href=''  onclick="msgbox(0); return false;">关闭</a>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+</body>
+
+<script src="{% static "//blog/js/jquery.js" %}"></script>
+
+
+
+
+
+<!-- >点击回复之后的操作<-->
+<script>
+ function msgbox(n) {
+     document.getElementById('inputbox').style.display = n ? 'block' : 'none';
+     obj = document.getElementById("inputbox").scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+ }
+
+
+$(document.body).on('click','.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.rq0escxv.p7hjln8o.kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso.i1ao9s8h.esuyzwwr.f1sip0of.lzcic4wl.m9osqain.nhd2j8a9.q9uorilb.n3ffmt46.l9j0dhe7.gpro0wi8',function(){
+    {#$(window).scrollTop($("#inputbox").offset().top - 20);#}
+reply_to_name = $(this).parent().parent().prev().children().find('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d9wwppkn.mdeji52x.e9vueds3.j5wam9gi.lrazzd5p.oo9gr5id').text();
+console.log(reply_to_name)
+
+comment_id = $(this).parent().parent().prev().children().find('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d9wwppkn.mdeji52x.e9vueds3.j5wam9gi.lrazzd5p.oo9gr5id').attr('id');
+com_obj = $(this)
+reply_to_name += '@'
+
+   $("#reply_to_username").text(reply_to_name);
+    $("#reply_to_username").attr('comment_id',comment_id);
+    $("#reply_comment").text(':');
+
+
+        //取消输入框enter键换行
+    // 改成按enter键直接提交评论
+    $('.oo9gr5id.lzcic4wl.l9j0dhe7.gsox5hk5.notranslate').on("keydown",function(e){
+        //一定是keydown ,keyup的话还是会先执行换行
+　　var code = e.keyCode;
+        console.log("wwh")
+        content = $("#reply_comment").text().split(':')[1];
+        comment_id = $("#reply_to_username").attr('comment_id')
+
+
+        if(code === 13 && content){
+                $.ajax({
+                    url: '/add_comment/',
+                    type: 'post',
+                    data: {
+                        comment_content:content,
+                        article_id:1,
+                        pid: comment_id,
+                    },
+                    success: function (response){
+                         for(var i=0;i<response.length;i++){
+                          username = response[i]["username"];
+                          content = response[i]["comment_content"];
+                         }
+                        $(".oo9gr5id.lzcic4wl.l9j0dhe7.gsox5hk5.notranslate>p>span").text("");
+
+                            com_obj.parents('.kvgmc6g5.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso').parent().parent().append(`<ul><li><div><div class="kvgmc6g5 jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso"><div class="ni8dbmo4 stjgntxs l9j0dhe7 d0szoon8"><div class="dsl5tyj5 pmk7jnqg datstx6m b3i9ofy5 mmi0k12o"></div></div><ul><li><div class="ni8dbmo4 stjgntxs l9j0dhe7 d0szoon8">
+
+<div aria-label="Reply by Wilfried Aymard to Didier Reviller's comment 29 weeks ago" role="article" tabindex="-1" class="l9j0dhe7 ecm0bbzt rz4wbd8a qt6c0cv9 scb9dxdr j83agx80 btwxx1t3 lzcic4wl"><div class="nqmvxvec s45kfl79 emlxlaya bkmhp75w spb7xbtv a8c37x1j fv0vnmcu l9j0dhe7 qjjbsfad"><span class="nc684nl6"><a aria-hidden="true" class="oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l q9uorilb lzcic4wl" href="https://www.facebook.com/wilfried.aymard.3?comment_id=Y29tbWVudDoxMTU0MTQ4OTQxNzQ5MDZfMTE1OTAxOTI0MTI2MjAz&amp;__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="-1"><div class="q9uorilb l9j0dhe7 pzggbiyp du4w35lb"><svg aria-hidden="true" class="pzggbiyp" data-visualcompletion="ignore-dynamic" role="none" style="height: 24px; width: 24px;"><mask id="jsc_c_6f"><circle cx="12" cy="12" fill="white" r="12"></circle></mask><g mask="url(#jsc_c_6f)"><image x="0" y="0" height="100%" preserveAspectRatio="xMidYMid slice" width="100%" xlink:href="https://scontent-lax3-2.xx.fbcdn.net/v/t39.30808-1/257441908_268462625226346_8378276419634446537_n.jpg?stp=c8.0.48.48a_cp0_dst-jpg_p48x48&amp;_nc_cat=111&amp;ccb=1-5&amp;_nc_sid=7206a8&amp;_nc_ohc=j7ydPmTAztwAX_QWLmR&amp;_nc_ht=scontent-lax3-2.xx&amp;oh=00_AT9vcInYUoVVmDRRMjbO6wgr2xB8uiL7wnpivdPV6GiW0Q&amp;oe=6226F993" style="height: 24px; width: 24px;"></image><circle class="mlqo0dh0 georvekb s6kb5r3f" cx="12" cy="12" r="12"></circle></g></svg></div><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3 s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore"></div></a></span></div><div class="rj1gh0hx buofh1pr ni8dbmo4 stjgntxs hv4rvrfc"><div><div class="bvz0fpym c1et5uql q9uorilb sf5mxxl7"><div class="k4urcfbm sf5mxxl7 l9j0dhe7 pq6dq46d"><div class="k4urcfbm hpfvmrgz g5gj957u buofh1pr mg4g778l"><div class="b3i9ofy5 e72ty7fz qlfml3jp inkptoze qmr60zad rq0escxv oo9gr5id q9uorilb kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x d2edcug0 jm1wdb64 l9j0dhe7 l3itjdph qv66sw1b"><div class="tw6a2znq sj5x9vvc d1544ag0 cxgpxx05"><span class="nc684nl6"><a class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gmql0nx0 gpro0wi8" href="https://www.facebook.com/wilfried.aymard.3?comment_id=Y29tbWVudDoxMTU0MTQ4OTQxNzQ5MDZfMTE1OTAxOTI0MTI2MjAz&amp;__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="0"><span class="pq6dq46d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn mdeji52x e9vueds3 j5wam9gi lrazzd5p oo9gr5id" dir="auto" id="7">{username}</span></span></a></span><div class="ecm0bbzt e5nlhep0 a8c37x1j"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d3f4x2em iv3no6db jq4qci2q a3bd9o3v b1v8xokw oo9gr5id" dir="auto" lang="fr"><div class="kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql"><div dir="auto" style="text-align: start;"><a class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p" href="https://www.facebook.com/didier.reviller?__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="0"><span class="nc684nl6"><span>{reply_to_name}</span></span></a>&nbsp;{content}</div></div></span></div></div></div></div></div></div><div class="q9uorilb sf5mxxl7 pgctjfs5"><div class="no6464jc b5wmifdl nv5ty6hh"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-expanded="false" aria-haspopup="menu" aria-label="Hide or report this" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://www.baidu.com/img/flexible/logo/pc/result.png&quot;); background-position: -165px -88px; background-size: 189px 139px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span></div></div></div>
+
+<ul class="o22cckgh q9uorilb bo9p93cb oygrvhab kkf49tns l66bhrea linoseic" id="attitude">
+<li class="h676nmdw oi9244e8 q9uorilb">
+<span class="q9uorilb"><div class="l9j0dhe7 q9uorilb"><span><div aria-label="Like" class="oajrlxb2 g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl bp9cbjyn j83agx80 buofh1pr pfnyh3mw taijpn5t gokke00a" role="button" tabindex="0"><div class="m9osqain nhd2j8a9 q9uorilb n3ffmt46 l9j0dhe7 gpro0wi8"><span class="q9uorilb sf5mxxl7 bdca9zbp"></span>Like</div></div><div aria-label="React" class="oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql pq6dq46d btwxx1t3 abiwlrkh p8dawk7l lzcic4wl kkf49tns q45zohi1 g0aa4cga pmk7jnqg" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/kUTViZLQmpL.png&quot;); background-position: -65px -126px; background-size: 189px 139px; width: 12px; height: 12px; background-repeat: no-repeat; display: inline-block;"></i><div class="n00je7tq arfg74bv qs9ysxi8 k77z8yql i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s" data-visualcompletion="ignore"></div></div></span></div></span></li><li class="h676nmdw oi9244e8 q9uorilb"><div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl m9osqain nhd2j8a9 q9uorilb n3ffmt46 l9j0dhe7 gpro0wi8" role="button" tabindex="0" onclick="msgbox(1)">
+
+Reply
+
+</div></li><li class="h676nmdw oi9244e8 q9uorilb"><a class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 m9osqain knj5qynh" href="https://www.facebook.com/permalink.php?story_fbid=115414894174906&amp;id=101921518857577&amp;comment_id=115879800795082&amp;reply_comment_id=116556590727403&amp;__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="0"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41">2022-03-14</span></a></li></ul></div></div></div><div class="ni8dbmo4 stjgntxs l9j0dhe7 dox67ykf">
+
+<div class="j83agx80 buofh1pr jklb3kyz l9j0dhe7">
+<div class="is6700om i09qtzwb b5wmifdl pmk7jnqg kr520xx4 ms05siws art1omkt heur4gxb dsl5tyj5 rn3csqz5"></div>
+<div class="oajrlxb2 g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql pq6dq46d btwxx1t3 abiwlrkh lzcic4wl bp9cbjyn m9osqain buofh1pr g5gj957u p8fzw8mz gpro0wi8" role="button" tabindex="0"><span class="j83agx80 a5y0qf1c fv0vnmcu ozuftl9m"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/1veEycM7G5f.png&quot;); background-position: 0px -472px; background-size: 25px 554px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i></span><span class="j83agx80 fv0vnmcu hpfvmrgz"></span></div></div></div>
+</li></ul></div></div></li></ul>`.Format({"username":username,"reply_to_name":reply_to_name.split('@')[0],"content":content}))
+
+                        pid =comment_id;
+                    }
+                })
+　　　　e.returnValue = false;
+　　　　return false;
+　　}
+    });
+})
+</script>
+
+
+
+
+
+
+<script type="text/javascript" src="{% static '/blog/js/linear.js' %}"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML'></script>
+<script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.initLineNumbersOnLoad();</script>
+<script type="text/javascript" color="0,174,255" opacity='0.7' zIndex="-2" count="200" src="https://download.ccspump.com/js/bjtx.js"></script>
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+<script>
+    var clipboard = new Clipboard('.copybtn');
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+
+    $("#codehilite").mouseenter(function() {
+    $("#ecodecopy").show("normal");
+    });
+
+    $("#codehilite").mouseleave(function() {
+    $("#ecodecopy").hide("normal");
+    });
+</script>
+
+
+
+
+<script>
+    //取消输入框enter键换行
+    // 改成按enter键直接提交评论
+    $('#first_commit_comment').on("keydown",function(e){
+        //一定是keydown ,keyup的话还是会先执行换行
+　　var code = e.keyCode;
+        $(".m9osqain.ni8dbmo4.stjgntxs.hzruof5a.pmk7jnqg.j9ispegn.ltmttdrg.kr520xx4.abiwlrkh.g0qnabr5.k4urcfbm").text('');
+         content = $("#first_comment").text();
+         console.log("www:",content);
+　　if(code === 13 && content){
+            var pid ="";
+            $.ajax({
+                url: '/add_comment/',
+                type: 'post',
+                data: {
+                    comment_content:content,
+                    article_id:1,
+                    pid: pid,
+                },
+                success: function (response){
+                      for(var i=0;i<response.length;i++){
+                          username = response[i]["username"];
+                          content = response[i]["comment_content"];
+                           $(".comment_list>ul").prepend(
+                           `<li><div><div class="kvgmc6g5 jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso"><div class="ni8dbmo4 stjgntxs l9j0dhe7 d0szoon8"><div class="dsl5tyj5 pmk7jnqg datstx6m b3i9ofy5 mmi0k12o"></div></div><ul><li><div class="ni8dbmo4 stjgntxs l9j0dhe7 d0szoon8">
+
+<div aria-label="Reply by Wilfried Aymard to Didier Reviller's comment 29 weeks ago" role="article" tabindex="-1" class="l9j0dhe7 ecm0bbzt rz4wbd8a qt6c0cv9 scb9dxdr j83agx80 btwxx1t3 lzcic4wl"><div class="nqmvxvec s45kfl79 emlxlaya bkmhp75w spb7xbtv a8c37x1j fv0vnmcu l9j0dhe7 qjjbsfad"><span class="nc684nl6"><a aria-hidden="true" class="oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l q9uorilb lzcic4wl" href="https://www.facebook.com/wilfried.aymard.3?comment_id=Y29tbWVudDoxMTU0MTQ4OTQxNzQ5MDZfMTE1OTAxOTI0MTI2MjAz&amp;__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="-1"><div class="q9uorilb l9j0dhe7 pzggbiyp du4w35lb"><svg aria-hidden="true" class="pzggbiyp" data-visualcompletion="ignore-dynamic" role="none" style="height: 24px; width: 24px;"><mask id="jsc_c_6f"><circle cx="12" cy="12" fill="white" r="12"></circle></mask><g mask="url(#jsc_c_6f)"><image x="0" y="0" height="100%" preserveAspectRatio="xMidYMid slice" width="100%" xlink:href="https://scontent-lax3-2.xx.fbcdn.net/v/t39.30808-1/257441908_268462625226346_8378276419634446537_n.jpg?stp=c8.0.48.48a_cp0_dst-jpg_p48x48&amp;_nc_cat=111&amp;ccb=1-5&amp;_nc_sid=7206a8&amp;_nc_ohc=j7ydPmTAztwAX_QWLmR&amp;_nc_ht=scontent-lax3-2.xx&amp;oh=00_AT9vcInYUoVVmDRRMjbO6wgr2xB8uiL7wnpivdPV6GiW0Q&amp;oe=6226F993" style="height: 24px; width: 24px;"></image><circle class="mlqo0dh0 georvekb s6kb5r3f" cx="12" cy="12" r="12"></circle></g></svg></div><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3 s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore"></div></a></span></div><div class="rj1gh0hx buofh1pr ni8dbmo4 stjgntxs hv4rvrfc"><div><div class="bvz0fpym c1et5uql q9uorilb sf5mxxl7"><div class="k4urcfbm sf5mxxl7 l9j0dhe7 pq6dq46d"><div class="k4urcfbm hpfvmrgz g5gj957u buofh1pr mg4g778l"><div class="b3i9ofy5 e72ty7fz qlfml3jp inkptoze qmr60zad rq0escxv oo9gr5id q9uorilb kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x d2edcug0 jm1wdb64 l9j0dhe7 l3itjdph qv66sw1b"><div class="tw6a2znq sj5x9vvc d1544ag0 cxgpxx05"><span class="nc684nl6"><a class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gmql0nx0 gpro0wi8" href="https://www.facebook.com/wilfried.aymard.3?comment_id=Y29tbWVudDoxMTU0MTQ4OTQxNzQ5MDZfMTE1OTAxOTI0MTI2MjAz&amp;__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="0"><span class="pq6dq46d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn mdeji52x e9vueds3 j5wam9gi lrazzd5p oo9gr5id" dir="auto" id="7">{username}</span></span></a></span><div class="ecm0bbzt e5nlhep0 a8c37x1j"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d3f4x2em iv3no6db jq4qci2q a3bd9o3v b1v8xokw oo9gr5id" dir="auto" lang="fr"><div class="kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql"><div dir="auto" style="text-align: start;"><a class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p" href="https://www.facebook.com/didier.reviller?__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="0"><span class="nc684nl6"><span></span></span></a>&nbsp;{content}</div></div></span></div></div></div></div></div></div><div class="q9uorilb sf5mxxl7 pgctjfs5"><div class="no6464jc b5wmifdl nv5ty6hh"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-expanded="false" aria-haspopup="menu" aria-label="Hide or report this" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://www.baidu.com/img/flexible/logo/pc/result.png&quot;); background-position: -165px -88px; background-size: 189px 139px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span></div></div></div>
+
+
+
+
+
+<ul class="o22cckgh q9uorilb bo9p93cb oygrvhab kkf49tns l66bhrea linoseic" id="attitude">
+<li class="h676nmdw oi9244e8 q9uorilb">
+<span class="q9uorilb"><div class="l9j0dhe7 q9uorilb"><span><div aria-label="Like" class="oajrlxb2 g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl bp9cbjyn j83agx80 buofh1pr pfnyh3mw taijpn5t gokke00a" role="button" tabindex="0"><div class="m9osqain nhd2j8a9 q9uorilb n3ffmt46 l9j0dhe7 gpro0wi8"><span class="q9uorilb sf5mxxl7 bdca9zbp"></span>Like</div></div><div aria-label="React" class="oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql pq6dq46d btwxx1t3 abiwlrkh p8dawk7l lzcic4wl kkf49tns q45zohi1 g0aa4cga pmk7jnqg" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/kUTViZLQmpL.png&quot;); background-position: -65px -126px; background-size: 189px 139px; width: 12px; height: 12px; background-repeat: no-repeat; display: inline-block;"></i><div class="n00je7tq arfg74bv qs9ysxi8 k77z8yql i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s" data-visualcompletion="ignore"></div></div></span></div></span></li><li class="h676nmdw oi9244e8 q9uorilb"><div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl m9osqain nhd2j8a9 q9uorilb n3ffmt46 l9j0dhe7 gpro0wi8" role="button" tabindex="0" onclick="msgbox(1)">
+
+
+Reply
+
+</div></li><li class="h676nmdw oi9244e8 q9uorilb"><a class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 m9osqain knj5qynh" href="https://www.facebook.com/permalink.php?story_fbid=115414894174906&amp;id=101921518857577&amp;comment_id=115879800795082&amp;reply_comment_id=116556590727403&amp;__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="0"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41">2022-03-14</span></a></li></ul></div></div></div><div class="ni8dbmo4 stjgntxs l9j0dhe7 dox67ykf">
+
+<div class="j83agx80 buofh1pr jklb3kyz l9j0dhe7">
+<div class="is6700om i09qtzwb b5wmifdl pmk7jnqg kr520xx4 ms05siws art1omkt heur4gxb dsl5tyj5 rn3csqz5"></div>
+<div class="oajrlxb2 g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql pq6dq46d btwxx1t3 abiwlrkh lzcic4wl bp9cbjyn m9osqain buofh1pr g5gj957u p8fzw8mz gpro0wi8" role="button" tabindex="0"><span class="j83agx80 a5y0qf1c fv0vnmcu ozuftl9m"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/1veEycM7G5f.png&quot;); background-position: 0px -472px; background-size: 25px 554px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i></span><span class="j83agx80 fv0vnmcu hpfvmrgz"></span></div></div></div>
+</li></ul></div></div></li>`.Format({"username":username,"content":content}));
+                      }
+                    $("#first_comment").text("");
+                    pid ="";
+
+                }
+
+            })
+　　　　e.returnValue = false;
+　　　　return false;
+　　}
+
+});
+</script>
+
+
+
+
+
+<script>
+          //自定义JS中字符串格式化方法
+        String.prototype.Format=function (arg) {
+            //console.log(this,arg); //this,当前调用方法的字符串，arg为Format方法传入的参数
+            //return '666'; //return，格式化之后获取的新内容，return啥就替换为啥
+            var temp = this.replace(/\{(\w+)\}/g,function (k,kk) {
+                // k相当于{(\w+)},kk相当于(\w+)要替换的东西,arg一般是一个字典
+                return arg[kk];
+            });
+            return temp;
+        };
+        $(function (){
+            //发送Ajax请求，获取所有评论的信息
+            //列表
+            //JS生成结构
+            var parama = window.location.href.split('http://127.0.0.1/detail/')[1]
+             $.ajax({
+                 url:"/get_comment/{parama}".Format({"parama":parama}),
+                 type:"GET",
+                 dataType:"JSON",
+                 success:function (arg){
+                     if (arg.status){
+                         var comment=commentTree(arg.data);
+                         $('.comment_list').append(comment);
+                     }else{
+                         alert(arg.msg);
+                     }
+                 }
+             })
+        });
+
+        //多级评论递归函数,js函数里面也有return,自己写js字符串格式化
+        //pyhton中字符串的方法都是str下的,js中是String.prototype下找的
+        var n = 0;
+        var number_size ="40px";
+        function commentTree(commentList) {
+        var temp=  `<li><div><div class="kvgmc6g5 jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso"><div class="ni8dbmo4 stjgntxs l9j0dhe7 d0szoon8"><div class="dsl5tyj5 pmk7jnqg datstx6m b3i9ofy5 mmi0k12o"></div></div><ul><li><div class="ni8dbmo4 stjgntxs l9j0dhe7 d0szoon8">
+{#{branch_one}#}
+<div aria-label="Reply by Wilfried Aymard to Didier Reviller's comment 29 weeks ago" role="article" tabindex="-1" class="l9j0dhe7 ecm0bbzt rz4wbd8a qt6c0cv9 scb9dxdr j83agx80 btwxx1t3 lzcic4wl"><div class="nqmvxvec s45kfl79 emlxlaya bkmhp75w spb7xbtv a8c37x1j fv0vnmcu l9j0dhe7 qjjbsfad"><span class="nc684nl6"><a aria-hidden="true" class="oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l q9uorilb lzcic4wl" href="https://www.facebook.com/wilfried.aymard.3?comment_id=Y29tbWVudDoxMTU0MTQ4OTQxNzQ5MDZfMTE1OTAxOTI0MTI2MjAz&amp;__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="-1"><div class="q9uorilb l9j0dhe7 pzggbiyp du4w35lb"><svg aria-hidden="true" class="pzggbiyp" data-visualcompletion="ignore-dynamic" role="none" style="height: 24px; width: 24px;"><mask id="jsc_c_6f"><circle cx="12" cy="12" fill="white" r="12"></circle></mask><g mask="url(#jsc_c_6f)"><image x="0" y="0" height="100%" preserveAspectRatio="xMidYMid slice" width="100%" xlink:href="https://scontent-lax3-2.xx.fbcdn.net/v/t39.30808-1/257441908_268462625226346_8378276419634446537_n.jpg?stp=c8.0.48.48a_cp0_dst-jpg_p48x48&amp;_nc_cat=111&amp;ccb=1-5&amp;_nc_sid=7206a8&amp;_nc_ohc=j7ydPmTAztwAX_QWLmR&amp;_nc_ht=scontent-lax3-2.xx&amp;oh=00_AT9vcInYUoVVmDRRMjbO6wgr2xB8uiL7wnpivdPV6GiW0Q&amp;oe=6226F993" style="height: 24px; width: 24px;"></image><circle class="mlqo0dh0 georvekb s6kb5r3f" cx="12" cy="12" r="12"></circle></g></svg></div><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3 s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore"></div></a></span></div><div class="rj1gh0hx buofh1pr ni8dbmo4 stjgntxs hv4rvrfc"><div><div class="bvz0fpym c1et5uql q9uorilb sf5mxxl7"><div class="k4urcfbm sf5mxxl7 l9j0dhe7 pq6dq46d"><div class="k4urcfbm hpfvmrgz g5gj957u buofh1pr mg4g778l"><div class="b3i9ofy5 e72ty7fz qlfml3jp inkptoze qmr60zad rq0escxv oo9gr5id q9uorilb kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x d2edcug0 jm1wdb64 l9j0dhe7 l3itjdph qv66sw1b"><div class="tw6a2znq sj5x9vvc d1544ag0 cxgpxx05"><span class="nc684nl6"><a class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gmql0nx0 gpro0wi8" href="https://www.facebook.com/wilfried.aymard.3?comment_id=Y29tbWVudDoxMTU0MTQ4OTQxNzQ5MDZfMTE1OTAxOTI0MTI2MjAz&amp;__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="0"><span class="pq6dq46d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn mdeji52x e9vueds3 j5wam9gi lrazzd5p oo9gr5id" dir="auto" id={comment_id}>{user}</span></span></a></span><div class="ecm0bbzt e5nlhep0 a8c37x1j"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d3f4x2em iv3no6db jq4qci2q a3bd9o3v b1v8xokw oo9gr5id" dir="auto" lang="fr"><div class="kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql"><div dir="auto" style="text-align: start;"><a class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 oo9gr5id lrazzd5p" href="https://www.facebook.com/didier.reviller?__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="0"><span class="nc684nl6"><span>{before_user}</span></span></a>&nbsp{content}</div></div></span></div></div></div></div></div></div><div class="q9uorilb sf5mxxl7 pgctjfs5"><div class="no6464jc b5wmifdl nv5ty6hh"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41"><div aria-expanded="false" aria-haspopup="menu" aria-label="Hide or report this" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://www.baidu.com/img/flexible/logo/pc/result.png&quot;); background-position: -165px -88px; background-size: 189px 139px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i><div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="inset: -8px;"></div></div></span></div></div></div>
+
+<ul class="o22cckgh q9uorilb bo9p93cb oygrvhab kkf49tns l66bhrea linoseic" id="attitude">
+<li class="h676nmdw oi9244e8 q9uorilb">
+<span class="q9uorilb"><div class="l9j0dhe7 q9uorilb"><span><div aria-label="Like" class="oajrlxb2 g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl bp9cbjyn j83agx80 buofh1pr pfnyh3mw taijpn5t gokke00a" role="button" tabindex="0"><div class="m9osqain nhd2j8a9 q9uorilb n3ffmt46 l9j0dhe7 gpro0wi8"><span class="q9uorilb sf5mxxl7 bdca9zbp"></span>Like</div></div><div aria-label="React" class="oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql pq6dq46d btwxx1t3 abiwlrkh p8dawk7l lzcic4wl kkf49tns q45zohi1 g0aa4cga pmk7jnqg" role="button" tabindex="0"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/kUTViZLQmpL.png&quot;); background-position: -65px -126px; background-size: 189px 139px; width: 12px; height: 12px; background-repeat: no-repeat; display: inline-block;"></i><div class="n00je7tq arfg74bv qs9ysxi8 k77z8yql i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s" data-visualcompletion="ignore"></div></div></span></div></span></li><li class="h676nmdw oi9244e8 q9uorilb"><div  class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl m9osqain nhd2j8a9 q9uorilb n3ffmt46 l9j0dhe7 gpro0wi8" role="button" tabindex="0" onClick="msgbox(1)">
+
+Reply
+
+</div></li><li class="h676nmdw oi9244e8 q9uorilb"><a class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl gpro0wi8 m9osqain knj5qynh" href="https://www.facebook.com/permalink.php?story_fbid=115414894174906&amp;id=101921518857577&amp;comment_id=115879800795082&amp;reply_comment_id=116556590727403&amp;__cft__[0]=AZW9pa7WG5ROyjYTmqq6RrY1ICZ7lA--aUvulAyLNtBacwWnbiuwxwVRf06l86siS0pNCttUcuy4nd-JUfuzaU-lWcn1VPnDe8fWwOvYDTbeZloYD5JzZ5-iqupY-CaaQvU&amp;__tn__=R]-R" role="link" tabindex="0"><span class="tojvnm2t a6sixzi8 abs2jz4q a8s20v7p t1p8iaqh k5wvi7nf q3lfd5jv pk4s997a bipmatt0 cebpdrjk qowsmv63 owwhemhu dp1hu0rb dhp61c6y iyyx5f41">{pub_time}</span></a></li></ul></div></div></div><div class="ni8dbmo4 stjgntxs l9j0dhe7 dox67ykf">
+{#{branch_two}#}
+<div class="j83agx80 buofh1pr jklb3kyz l9j0dhe7">
+<div class="is6700om i09qtzwb b5wmifdl pmk7jnqg kr520xx4 ms05siws art1omkt heur4gxb dsl5tyj5 rn3csqz5"></div>
+<div class="oajrlxb2 g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql pq6dq46d btwxx1t3 abiwlrkh lzcic4wl bp9cbjyn m9osqain buofh1pr g5gj957u p8fzw8mz gpro0wi8" role="button" tabindex="0"><span class="j83agx80 a5y0qf1c fv0vnmcu ozuftl9m"><i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/1veEycM7G5f.png&quot;); background-position: 0px -472px; background-size: 25px 554px; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i></span><span class="j83agx80 fv0vnmcu hpfvmrgz"></span></div></div></div>
+</li></ul></div></div></li>`
+
+
+
+
+            var  comment_str='<ul>';
+            $.each(commentList,function (k,row) {
+
+                if (  row.child.length){
+                comment_str+=temp.Format({
+                comment_id:row.id,
+                user:row.username,
+                before_user:row.before_user,
+                content:row.comment_content,
+                pub_time:row.comment_time,
+            });
+
+                comment_str += commentTree(row.child,n);
+
+
+
+                }  else{
+                      console.log(n,k,row);
+                    if ( row.pre_comment_id){
+                        pre_user = row.before_user;
+
+                    }else {pre_user=''}
+                    comment_str+=temp.Format({
+                        comment_id:row.id,
+                        branch_one: '',
+                        user:row.username,
+                        before_user:pre_user,
+                        content:row.comment_content,
+                        pub_time:row.comment_time,
+                    });
+                }
+
+            });
+
+                    comment_str += "</ul>"
+
+
+            return comment_str
+        }
+
+
+
+</script>
+
+
+</html>

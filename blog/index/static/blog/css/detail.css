@@ -1,0 +1,177 @@
+#sideToggle{display: none;background-color: #ffffff}
+#sideToggle:checked + aside{ left:70px; }
+#sideToggle:checked ~ #wrap{ padding-left:350px;}
+
+
+body{background-color: #0d1117;color: white;font-size: 12px;direction: ltr;}
+body > aside{
+    position:fixed;
+    top:130px;
+    bottom:0;
+    left:-300px;
+    width:300px;
+    height: 300px;
+    transition:0.2s ease-out;
+    -webkit-transition:0.2s ease-out;
+    border:1px solid #30363d;
+    background-color: #161b22;
+    color:#c9d1d9;
+    border-radius:8px;
+   }
+
+body > aside > h3{color:#008BA7;text-align:left;
+    font-weight:normal;padding:10px; }
+
+#wrap{ margin-top:30px;
+    margin-left:30px;
+    margin-right:30px;
+    padding:10px;
+    transition:0.25s ease-out;
+    -webkit-transition:0.25s ease-out;
+    display:block;
+}
+  #wrap > label{ display:inline-block; }
+    #wrap > label{
+      background:#f1103a;
+      border-radius:50px;
+      color: #FFF;
+      cursor: pointer;
+      display: block;
+      font-family: Courier New;
+      font-size: 25px;
+      font-weight: bold;
+      width: 30px;
+      height: 30px;
+      line-height: 35px;
+      text-align: center;
+      text-shadow: 0 -4px;
+
+    }
+    #wrap > label:hover{ background:#000; }
+
+.widget-title{margin-left: 25px}
+.toc li{line-height: 150%}
+.toc  li>a{text-decoration: none;color:#c9d1d9;}
+.toc  li>a:hover{color:red}
+.toc ol{padding-left: 40px}
+ .widget-title>ul{padding-left: 20px}
+ .widget-title>ul>li{list-style-type: lower-greek;text-indent: 3px;line-height: 150%}
+.son1,.widget.widget-content{margin-top: 5%;}
+
+#content{margin:0 auto;
+    width:65%;
+    border:1px solid #30363d;
+    border-radius:8px;
+    word-break:break-all;
+    opacity: 1;
+    font-size: 16px;
+}
+pre{position: relative;}
+.hljs{
+    /*color: #c9d1d9;*/
+    font-weight: bolder;
+}
+.hljs-keyword{color:#FF79C6;font-weight:bold}
+.hljs-tag, .hljs-name, .hljs-attribute{
+    color: #008BA7;
+     font-weight: bold;
+
+}
+
+.hljs-title, .hljs-section, .hljs-selector-id{
+    color:#FFC66D;
+    font-weight: bold;
+}
+
+.hljs-comment, .hljs-quote {
+    color:#6272A4;
+    font-weight: bold;
+    font-style:inherit;
+
+}
+.hljs-type, .hljs-class .hljs-title {
+    color:#8BE9FD;
+    font-weight: bold;
+}
+code{
+    /*background-color: #161b22;*/
+    border-bottom-right-radius: 6px !important;
+    border-bottom-left-radius: 6px !important;
+}
+
+button{
+    position: relative;
+    cursor: pointer;
+    right:0.1em;
+    display: none;
+    overflow: hidden;
+    border: 0}
+
+div:hover button{
+    position:relative;
+    display: block;
+}
+
+#content > p > img { border : none ;
+    padding : 0 ;width:50px ;
+    height:50px;border-radius: 50%;}
+
+.comment_post{
+    background: darkslategrey;
+    margin-left: 20%;
+    height: 30%;
+    width: 60%;
+
+}
+
+textarea {
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+    line-height: 24px;
+    font-size: 14px;
+    color: #d3d3d3;
+    min-height: 24px;
+    max-height: 456px;
+    resize: none;
+}
+
+<!-- -->
+    /*代码雨
+    /*basic reset*/
+    /*adding a black bg to the body to make things clearer*/
+    canvas {display: block;position: relative;float: bottom;top: 0}
+    <!-- -->
+        .parent{
+            display: flex;
+        }
+        .son1 {
+             flex:1;
+            width: 15%;
+            position: fixed;
+            border:1px solid #30363d;
+            background-color: #161b22;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
