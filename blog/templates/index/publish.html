@@ -308,9 +308,22 @@
 
                             <div class="related-widget-wrapper">
     <select name="category" required id="id_category">
-  <option value="" selected>---------</option>
 
-  <option value="1">Categroy object (1)</option>
+          <option value="" selected>---------</option>
+          <option value="1">python</option>
+          <option value="2">machlearning</option>
+          <option value="3">deeplearning</option>
+          <option value="4">django</option>
+          <option value="5">spider</option>
+          <option value="6">html</option>
+          <option value="7">css</option>
+          <option value="8">javascript</option>
+          <option value="9">jquery</option>
+          <option value="10">mysql</option>
+          <option value="11">hadoop</option>
+          <option value="12">git</option>
+          <option value="13">java</option>
+          <option value="13">linux</option>
 
 </select>
 
@@ -328,31 +341,7 @@
 
         </div>
 
-        <div class="form-row field-auth_user">
 
-
-                <div>
-
-
-                        <label class="required" for="id_auth_user">Auth user:</label>
-
-                            <div class="related-widget-wrapper">
-    <select name="auth_user" required id="id_auth_user">
-  <option value="" selected>---------</option>
-
-  <option value="1">UserProfile object (1)</option>
-
-</select>
-
-
-
-</div>
-
-
-
-                </div>
-
-        </div>
 
 </fieldset>
 
@@ -427,6 +416,7 @@
         var publish_time = $("#id_a_publish_time").val();
         {#var content = [...document.querySelectorAll('pre>span')].map(v => v.textContent)#}
         var content = [...$("pre > span")].map(v => v.textContent)
+        var categroy = $("#id_category").val();
 
         var astr = ''
         for (var  i=0;i<content.length;i++) {
@@ -445,12 +435,13 @@
                     'publish_date':publish_date,
                     'publish_time':publish_time,
                     'content':astr,
+                    'categroy':categroy,
                 },
 
                 success: function (response) {
                     var res=JSON.parse(response);
                     if (res.status){
-                        location.href= "http://127.0.0.1/blog";
+                        location.href= "http://127.0.0.1/categroy/";
                     }else {
                             alert("faile no response")
                     }

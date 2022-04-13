@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <title></title>
     <style>#edit{height:500px;width:500px;border:1px solid red;}</style>
+
+
+
+
 </head>
 <body>
+
+
+
+
     <div id="edit" contenteditable></div>
     <input type="text" id="emojiInput">
     <button id="sendEmoji">发送表情</button>
@@ -54,13 +62,13 @@
                  console.log("www")
             }
             // 判断选定对象范围是编辑框还是文本节点
-            if (selection.anchorNode.nodeName != '#text') {
+            if (selection.anchorNode.nodeName != '#text'){
                  console.log("hello")
                 // 如果是编辑框范围。则创建表情文本节点进行插入
-                var emojiText = document.createTextNode(emojiInput.value)
-                console.log(emojiInput.value)
-                if (edit.childNodes.length > 0) {
-                                     console.log("+++")
+                var emojiText = document.createTextNode(emojiInput.value);
+                console.log(emojiInput.value);
+                if (edit.childNodes.length > 0){
+                                     console.log("+++");
 
                     // 如果文本框的子元素大于0，则表示有其他元素，则按照位置插入表情节点
                     for (var i = 0; i < edit.childNodes.length; i++) {
@@ -113,3 +121,4 @@
     </script>
 </body>
 </html>
+<p class="hcukyx3x oygrvhab cxmmr5t8 kvgmc6g5 first_comment" contenteditable="true" spellcheck="true" data-lexical-editor="true" role="textbox" ><span data-lexical-text="ture" data-lexical-editor="true"> </span><br></p>

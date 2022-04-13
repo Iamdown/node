@@ -7,14 +7,17 @@ import requests
 import json
 import ssl
 import re
+import uuid
 from lxml import etree
 import markdown
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
 from django.shortcuts import get_object_or_404, render
 from datetime import datetime
+import time
 from django.contrib.auth.models import User
 ssl._create_default_https_context = ssl._create_unverified_context
+
 
 
 headers ={"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"}
@@ -118,15 +121,20 @@ def detail(request, pk):
                                                  ])
     post.a_content = md.convert(post.a_content)
     post.toc = md.toc
-    n = post.a_content.count('<div class="codehilite">', 0, len(post.a_content))
-    for i in range(n):
-        post.a_content = re.sub(r'<div class="codehilite">',
-                                '<div class="codehilite" id="code{}">'
-                                '<button id="ecodecopy" style="float:'
-                                ' right;z-index:10" class="copybtn"'
-                                ' data-clipboard-action="copy"'
-                                'data-clipboard-target="#code{}">复制'
-                                '</button>'.format(i, i), post.a_content, 1)
+    if "<p>" in post.a_content and "\n" in post.a_content:
+          post.a_content = post.a_content.replace('\n','<br>')
+    if "<ol>" in post.a_content:
+        post.a_content = post.a_content.replace(r'<ol>','<ul>')
+    # n = post.a_content.count('<div class="codehilite">', 0, len(post.a_content))
+    # for i in range(n):
+    #
+    #     post.a_content = re.sub(r'<div class="codehilite">',
+    #                             '<div class="codehilite" id="code{}">'
+    #                             '<button id="ecodecopy" style="float:'
+    #                             ' right;z-index:10" class="copybtn"'
+    #                             ' data-clipboard-action="copy"'
+    #                             'data-clipboard-target="#code{}">复制'
+    #                             '</button>'.format(i, i), post.a_content, 1)
     m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
     post.toc = m.group(1) if m is not None else ''
     return render(request,'index/detail.html',context={'post': post})
@@ -134,51 +142,90 @@ def detail(request, pk):
 
 
 def add_comment(request):  # 提交评论的处理函数
-
     if request.user.username:
         comment_content = request.POST.get('comment_content')
+        level = int(request.POST.get('level'))
         article_id = request.POST.get('article_id')
         pid = request.POST.get('pid')
-        print("pid:",pid)
-        username = request.user  # 获取当前用户的ID
-
+        user = request.user  # 获取当前用户的ID
+        unique_code = uuid.uuid5(uuid.uuid1(), comment_content)
         #将提交的数据保存到数据库中
         Comment.objects.create(
             comment_content=comment_content,
+            level = level,
             pre_comment_id=pid,
             article_id=article_id,
-            comment_author = username,
-          )
-        comment_list = [{"username":str(username),
+            unique_code= unique_code,
+            comment_author = user)
+        # reply_comment =  request.POST.get('reply_comment')
+        # if "1" in reply_comment:
+        obj_data = Comment.objects.get(unique_code=unique_code)
+        c_id = obj_data.id
+        pid = obj_data.pre_comment_id
+        comment_time = datetime.timestamp(obj_data.comment_time)
+        comment_list = [{"username":user.username,
+                         "level":level,
                          "comment_content":comment_content,
-                         }]
-        return JsonResponse(comment_list,safe=False)
+                         "comment_time":comment_time*1000,
+                         "pid":pid,
+                         "id":c_id}]
+        return JsonResponse(comment_list, safe=False)
+        # else:
+        #     res = get_comment_datas(article_id)
+        #     return HttpResponse(json.dumps(res))
+
         # JsonResponse返回JSON字符串，自动序列化,
         # 如果不是字典类型，则需要添加safe参数为False
     else:
         return redirect('/user_login/')
 
+def delete_comment(request):
+     res = {'msg': None}
+     if request.method =="POST":
+          cid = request.POST.get("comment_id")
+          Comment.objects.filter(id=cid).delete()
+          msg = "删除成功"
+     else:
+          msg = "删除失败"
+     res["msg"] = msg
+     return  HttpResponse(json.dumps(res))
+
+def edit_comment(request):
+    res = {'msg': None}
+    if request.method == "POST":
+        cid = request.POST.get("comment_id")
+        comment_content = request.POST.get("comment_content")
+        Comment.objects.filter(id=cid).update(comment_content=comment_content)
+        msg = "修改成功"
+    else:
+        msg = "修改失败"
+    res["msg"] = msg
+    return HttpResponse(json.dumps(res))
+
+
 
 
 def get_comment(request,pk):
-
     res = {'status': True, 'data': None, 'msg': None}
     try:
         comment_obj = Comment.objects.filter(article_id=pk).order_by("-comment_time")
         com_list = []
         for cm in comment_obj:
-              username = cm.comment_author.username
-              comment_time = cm.comment_time
-              comment_time = datetime.strftime(comment_time, '%Y-%m-%d')
-              comment_content = cm.comment_content
-              article_username = cm.article.a_auth_name
-              pre_comment_id = cm.pre_comment_id
-              com_list.append({"id":cm.id,"username":username,
-                     "article_username":article_username,
-                      "comment_content":comment_content,
-                     "comment_time":comment_time,
-                     "pre_comment_id":pre_comment_id,"child":[],
-                      "before_user":article_username})
+            username = cm.comment_author.username
+            comment_time = datetime.timestamp(cm.comment_time)
+            #comment_time = datetime.strftime(comment_time, '%Y-%m-%d')
+            comment_content = cm.comment_content
+            level = cm.level
+            article_username = cm.article.a_auth_name
+            pre_comment_id = cm.pre_comment_id
+            com_list.append({"id": cm.id, "username": username,
+                             "article_username": article_username,
+                             "comment_content": comment_content,
+                             "comment_time": comment_time*1000,
+                             "pre_comment_id": pre_comment_id,
+                             "child": [],
+                             "level": level,
+                             "before_user": article_username})
         com_list_dict = {}  # 建立一个方便查找的数据结构字典
         for item in com_list:  # 循环评论列表,给每一条评论加一个child:[]就是让他装对他回复的内容
             com_list_dict[item['id']] = item
@@ -195,6 +242,7 @@ def get_comment(request,pk):
         res['status'] = False
         res['mag'] = str(e)
     return HttpResponse(json.dumps(res))
+
 
 
 
@@ -224,7 +272,6 @@ def blog(request,c_name):
 
 
 def center(request):
-
     return render(request,'index/center.html')
 
 #编辑markdown
@@ -232,6 +279,7 @@ def publish(request):
 
     if request.method == 'GET':
         return render(request, 'index/publish.html')
+
     elif request.method == 'POST':
         result = {"status": True,'url': None}
         title = request.POST.get('title')
@@ -241,8 +289,10 @@ def publish(request):
         publish_time = request.POST.get('publish_time')
         publish_date = datetime.strptime(publish_date, '%Y-%m-%d').date()
         publish_time = datetime.strptime(publish_time,'%H:%M:%S').time()
-        uid = User.objects.get(u_id=1)
-        cid =Categroy.objects.get(c_id=1)
+        username = request.user.username
+        uid = User.objects.get(username=username)
+        c_id = request.POST.get('categroy')
+        cid =Categroy.objects.get(c_id=c_id)
         result["url"] = 'http://127.0.0.1/blog'
         Artical.objects.create(a_title=title,a_auth_name=auth_name,
                                     a_content=content,a_publish_date=publish_date,
@@ -260,8 +310,6 @@ def categroy(request):
 
     c_obj_q = Categroy.objects.all()
     return render(request,'index/categroy.html',context={"c_obj_q":c_obj_q})
-
-
 
 
 #帖子

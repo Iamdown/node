@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>fixedsidebar</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+            min-height: 500px;
+            margin-top: 50px;
+        }
+        .header {
+            position: fixed;
+            width: 100%;
+            height: 50px;
+            left: 0;
+            top: 0;
+            background-color: #123;
+            z-index: 999
+        }
+        .main {
+            width: 70%;
+            height: 2000px;
+            border: 1px solid gray;
+            float: left;
+            display: inline-block;
+            background-image: url('006.jpg');
+        }
+        .side {
+            width: 100px;
+            height: 900px;
+            float: left;
+            display: inline-block;
+            background-image: url('018.jpg');
+        }
+    </style>
+</head>
+<body>
+<div class="header"></div>
+<div class="container">
+    <div class="main"></div>
+    <div class="side">
+         <pre>
+            aaaa    1
+            bbbb    2
+            aaaa    3
+            aaaa    4
+            aaaa    5
+            aaaa    6
+            aaaa    7
+            aaaa    8
+            aaaa    9
+            aaaa    10
+            aaaa    11
+            aaaa    12
+            aaaa    13
+            aaaa    14
+            aaaa    15
+            aaaa    16
+            cccc    17
+            aaaa    18
+            aaaa    19
+            aaaa    20
+            aaaa    21
+            aaaa    22
+            aaaa    23
+            aaaa    24
+            aaaa    25
+            aaaa    26
+            aaaa    27
+            aaaa    28
+            aaaa    29
+            aaaa    30
+            aaaa    31
+            aaaa    32
+            aaaa    33
+            aaaa    34
+            aaaa    35
+            aaaa    36
+            aaaa    37
+            aaaa    38
+            aaaa    39
+            aaaa    40
+            aaaa    41
+            aaaa    42
+            aaaa    43
+            aaaa    44
+            aaaa    45
+            aaaa    46
+            aaaa    47
+            aaaa    48
+            aaaa    49
+            aaaa    50
+            aaaa    51
+            aaaa    52
+            aaaa    53
+            aaaa    54
+            aaaa    55
+            aaaa    56
+            aaaa    57
+            eeee    58
+            aaaa    59
+            aaaa    60
+            aaaa    61
+            cddd    62
+        </pre>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="scrollFix.js"></script>
+<script type="text/javascript">
+    $(".sideBar").scrollFix( {
+        baseTop: 50, // 初始top值
+        main: "#content"  // 主体区选择器
+    });
+
+
+$.fn.scrollFix = function (opt) {
+    var defaults = {
+        baseTop: 50, // 初始top值
+        main: "#content"  // 主体区选择器
+    };
+    var settings = $.extend(defaults, opt);
+
+    var $window = $(window),
+        $this = $(this),
+        windowHeight,
+        scrollTop,
+        thisHeight,
+        $main = $(settings.main),
+        mainHeight;
+    $window.scroll(function () {
+        windowHeight = $window.height();
+        scrollTop = $window.scrollTop();
+        mainHeight = $main.height();
+        $this.each(function (idx, val) {
+            thisHeight = $(this).height();
+            // 当主体区高度小于侧边栏时不做处理
+            if (mainHeight < thisHeight) {
+                return false;
+            }
+            // 当主体区高度大于侧边栏，且下滚高度+窗口高度大于侧边栏高度时，固定侧边栏
+            if (scrollTop + windowHeight > thisHeight) {
+                $(this).css({
+                    position: 'sticky',
+                    bottom: "50px"
+                    // top: (thisHeight - windowHeight) > 0 ? -(thisHeight - windowHeight) - 30 : settings.baseTop
+                    //  left: (idx*100) +"px"
+                    // 如果当前元素的高度大于窗口高度，则上移 当前元素高度与窗口高度的差值，
+                    // 否则紧贴窗口顶部
+                });
+            } else {
+                $(this).css({
+                    position: 'static'
+                });
+            }
+        });
+    });
+
+}
+</script>
+
+
+</html>

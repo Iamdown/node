@@ -57,12 +57,21 @@ class Artical(models.Model):
 
 
 class Comment(models.Model):  # 定义评论模型
-    article = models.ForeignKey("Artical", on_delete=models.DO_NOTHING, verbose_name='评论文章')
+
     comment_content = models.TextField(verbose_name='评论内容')
-    comment_author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, verbose_name='评论者')
     comment_time = models.DateTimeField(auto_now_add=True, verbose_name='评论时间')
-    pre_comment = models.ForeignKey('self', on_delete=models.DO_NOTHING, null=True,
-                                    verbose_name='父评论id')  # 父级评论，如果没有父级则为空NULL, "self"表示外键关联自己
+    article = models.ForeignKey("Artical", on_delete=models.DO_NOTHING, verbose_name='评论文章')
+    comment_author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, verbose_name='评论者')
+    pre_comment = models.ForeignKey('self', on_delete=models.DO_NOTHING, null=True,verbose_name='父评论id')  # 父级评论，如果没有父级则为空NULL, "self"表示外键关联自己
+    unique_code = models.CharField(max_length=36,unique=True, null=True, verbose_name="唯一识别码")
+    level = models.IntegerField(verbose_name="Level",null=True)
+    like = models.IntegerField(verbose_name="Like",null=True)
+    love = models.IntegerField(verbose_name="Love",null=True)
+    care = models.IntegerField(verbose_name="Care",null=True)
+    haha = models.IntegerField(verbose_name="Haha",null=True)
+    angry = models.IntegerField(verbose_name="Angry",null=True)
+    wow = models.IntegerField(verbose_name="Wow",null=True)
+    sad = models.IntegerField(verbose_name="Sad",null=True)
 
     class Meta:
         db_table = 'comment'
