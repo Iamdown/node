@@ -93,7 +93,6 @@ def forget(request):
                 result['status'] = False
                 # 判断验证码是否已经发送
             elif not request.session.get('vcode'):
-
                     # 发送验证码并将验证码写入session
                     result['button'] = '重置密码'
                     result['tips'] = '验证码已发送 请查收邮件'

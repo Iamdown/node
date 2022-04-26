@@ -4,28 +4,28 @@
 <head>
 <title>Add artical | Django site admin</title>
     {% include 'index/head.html' %}
-<link rel="stylesheet" type="text/css" href="/public/admin/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/public/admin/css/forms.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
 
 
-<script type="text/javascript" src="/admin/jsi18n/"></script>
-<link href="/public/mdeditor/css/editormd.css" type="text/css" media="all" rel="stylesheet" />
-<script type="text/javascript" src="/public/admin/js/vendor/jquery/jquery.js"></script>
-<script type="text/javascript" src="/public/admin/js/jquery.init.js"></script>
-<script type="text/javascript" src="/public/admin/js/core.js"></script>
-<script type="text/javascript" src="/public/admin/js/admin/RelatedObjectLookups.js"></script>
-<script type="text/javascript" src="/public/admin/js/actions.js"></script>
-<script type="text/javascript" src="/public/admin/js/urlify.js"></script>
-<script type="text/javascript" src="/public/admin/js/prepopulate.js"></script>
-<script type="text/javascript" src="/public/admin/js/vendor/xregexp/xregexp.js"></script>
-<script type="text/javascript" src="/public/admin/js/calendar.js"></script>
-<script type="text/javascript" src="/public/admin/js/admin/DateTimeShortcuts.js"></script>
-<script type="text/javascript" src="/public/mdeditor/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/mdeditor/js/editormd.min.js"></script>
+<script type="text/javascript" src="{% static '/blog/publishArticle/js/jsi18n.js'%}"></script>
+<link href="/static/mdeditor/css/editormd.css" type="text/css" media="all" rel="stylesheet" />
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<script type="text/javascript" src="/static/admin/js/calendar.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+<script type="text/javascript" src="/static/mdeditor/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/mdeditor/js/editormd.min.js"></script>
 
 
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/public/admin/css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css" />
 
 
 <meta name="robots" content="NONE,NOARCHIVE" />
@@ -35,8 +35,6 @@
         .required label, label.required, .editormd.CodeMirror pre {font-weight: bold;color: #c9d1d9;}
         .CodeMirror-activeline-background.CodeMirror-linebackground{background: #0c5460}
         div.breadcrumbs{background-color: #0d1117}
-
-
 
 
          .form-row,
@@ -57,7 +55,7 @@
         }
 
 
-          .editormd-toolbar {border-bottom: 1px solid #30363d;}
+          .editormd-toolbar {border-bottom: 0px solid #30363d;}
           .editormd .CodeMirror,.editormd-menu > li.divider{border-right: 1px solid #30363d}
 
 
@@ -163,22 +161,15 @@
 
 
 
+
                 </div>
 
         </div>
 
         <div class="form-row field-a_publish_time">
-
-
                 <div>
-
-
                         <label class="required" for="id_a_publish_time">Publish time:</label>
-
                             <input type="text" name="a_publish_time" class="vTimeField" size="8" required id="id_a_publish_time" />
-
-
-
                 </div>
 
         </div>
@@ -187,8 +178,6 @@
 
 
                 <div>
-
-
                         <label class="required" for="id_a_content">Artcial content:</label>
 
 
@@ -253,7 +242,7 @@
                 })
             },
             syncScrolling: "single",
-            path: "/public/mdeditor/js/lib/",
+            path: "/static/mdeditor/js/lib/",
             // theme
             theme : "default",
             previewTheme : "default",
@@ -329,9 +318,9 @@
 
         <a class="related-widget-wrapper-link change-related" id="change_id_category"
             data-href-template="/admin/index/categroy/__fk__/change/?_to_field=c_id&amp;_popup=1"
-            title="Change selected categroy"><img src="/public/admin/img/icon-changelink.svg" alt="Change"/></a><a class="related-widget-wrapper-link add-related" id="add_id_category"
+            title="Change selected categroy"><img src="/static/admin/img/icon-changelink.svg" alt="Change"/></a><a class="related-widget-wrapper-link add-related" id="add_id_category"
             href="/admin/index/categroy/add/?_to_field=c_id&amp;_popup=1"
-            title="Add another categroy"><img src="/public/admin/img/icon-addlink.svg" alt="Add"/></a>
+            title="Add another categroy"><img src="/static/admin/img/icon-addlink.svg" alt="Add"/></a>
 
 </div>
 
@@ -365,7 +354,7 @@
 
     <script type="text/javascript"
             id="django-admin-form-add-constants"
-            src="/public/admin/js/change_form.js"
+            src="/static/admin/js/change_form.js"
 
                 data-model-name="artical"
             >
@@ -376,7 +365,7 @@
 
 <script type="text/javascript"
         id="django-admin-prepopulated-fields-constants"
-        src="/public/admin/js/prepopulate_init.js"
+        src="/static/admin/js/prepopulate_init.js"
         data-prepopulated-fields="[]">
 </script>
 
@@ -392,6 +381,9 @@
     <div id="footer"></div>
 </div>
 <!-- END Container -->
+
+<br><br><br><br><br><br><br><br><br><br>
+{% include "public/footer.html" %}
 </body>
 
 {#<script>#}
@@ -415,7 +407,7 @@
         var publish_date = $("#id_a_publish_date").val();
         var publish_time = $("#id_a_publish_time").val();
         {#var content = [...document.querySelectorAll('pre>span')].map(v => v.textContent)#}
-        var content = [...$("pre > span")].map(v => v.textContent)
+        var content = [...$("pre > span")].map(v => v.textContent);
         var categroy = $("#id_category").val();
 
         var astr = ''
@@ -423,7 +415,7 @@
             astr += content[i].toString();
             astr += '\n';
 
-        }
+        }console.log(astr);
 
 
             $.ajax({

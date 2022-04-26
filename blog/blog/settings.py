@@ -26,10 +26,10 @@ SECRET_KEY = ')t0cb6-8t=23(7-g^#oa7ix0f0qpi+n7=hlni0)4@@!lqq=!az'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #调试模式
-DEBUG = True
+DEBUG = False
 
 #设置允许访问的域名 默认127.0.0.1 或者localhost
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'mdeditor',
     'channels',
     'chat',#自定义的app
+    'haystack',
 ]
 
 #中间件配置
@@ -78,6 +79,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 处理静态问题件
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -98,6 +101,7 @@ DATABASES = {
         'PASSWORD':'123456',
         'HOST':'127.0.0.1',
         'PORT':3306,
+        'OPTIONS': {'charset': 'utf8mb4'}
     }
 }
 #缓存设置
@@ -150,10 +154,25 @@ USE_TZ = True
 #静态资源配置
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-STATIC_URL = '/public/' #必须配置的属性不能为空
-STATICFILES_DIRS=[os.path.join(BASE_DIR, 'public')]
+STATIC_URL = '/static/' #必须配置的属性不能为空
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "imgages"),]
+#print(STATICFILES_DIRS)
+#print("STAL:",STATIC_ROOT)
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+
+
+
+
 
 #os.path.join 文件路径相加
+
+
+
 
 
 #session配置信息
@@ -169,7 +188,10 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False # 是否关闭浏览器使用Session过�
 SESSION_SAVE_EVERY_REQUEST = False # 是否每次发送后保存Session 默认值为False
 
 #不需要登录验证的URL
-OPEN_URLS = ['/user/forget/', '/user/register/','/index/detail/1']
+OPEN_URLS = ['/user/forget/', '/user/register/','/','/static/user/css/frameworks-03e2fd5bd74d065ddc15fc8e3cfbc528.css',
+             '/static/user/jq/jquery.js','/static/user/jq/md5.js','/static/unlogin/js/webgl-globe-8bbbb3d9.js',
+             '/static/user/register/css/bootstrap.min.css']
+
 #未登录所有的请求都将跳转到这个URL地址
 LOGIN_URL='/user/signin/'
 
@@ -217,15 +239,12 @@ MDEDITOR_CONFIGS = {
 
 }
 
-
 APPEND_SLASH=False
-
 AUTH_USER_MODEL="auth.User"
 
 
 #聊天室
 ASGI_APPLICATION = 'blog.routing.application'
-
 #redis无密码的配置
 # CHANNEL_LAYERS = {
 #     "default": {
@@ -247,3 +266,21 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+
+#搜索功能配置
+HAYSTACK_CONNECTIONS = {
+    'default': {
+      #  'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+          'ENGINE': 'index.whoosh_cn_backend.WhooshEngine',
+     #   'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        # 此处为elasticsearch运行的服务器ip地址，端口号默认为9200
+        #'URL':"http://www.127.0.0.1:80/",
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    }
+}
+#显示多个搜索结果
+HAYSTACK_SEARCH_RESULT_PER_PAGE = 10
+# 添加此项，当数据库改变时，会自动更新索引，非常方便
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

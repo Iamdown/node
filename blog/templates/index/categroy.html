@@ -1,96 +1,79 @@
 {% load static %}
+
 <!DOCTYPE html>
+
 <html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
     {% include 'index/head.html' %}
     {% include 'index/header.html' %}
+      <style>
+          *{
+              margin:0;
+              padding: 0;
+          }
+        .footer.container-xl.width-full.p-responsive{
+         padding-bottom: 0;
+        }
+
+    h3{
+        background-color: black;
+        border-radius: 100px;
+        width: 110px;
+        height: 110px;
+        text-align: center;
+        -moz-border-radius: 100px;
+        line-height: 95px;
+        margin-left:62px;
+        box-shadow: 0 0 6px black;
+        max-width: 100%;
+        word-break: break-word;
+    }
+    a:hover{
+        color:black;
+          text-decoration:none;
+    }
+
+    h3:hover{
+        color:#f0f6fc;
+        background-color: #0b9e89;
+    }
+
+    .tools__item{
+        float: left;
+        margin-top: 50px;
+    }
+
+    .none_su{
+        width:100%;
+        height: 95px;
+
+    }
+</style>
 
 
  <body class="logged-out env-production page-responsive" style="word-wrap: break-word;">
 
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-                ga('create', 'UA-12651114-1 ', 'auto');
-                ga('send', 'pageview');
-    </script>
-
 
 <div class="main"></div>
-
-<div class="tools">
-    <div class="tools__container">
-        {% for c_obj in c_obj_q %}
-        <div class="tools__item">
-            <a href="http://127.0.0.1:80/blog/{{  c_obj.c_name  }}" title="Merge PDF">
-{#                <div class="tools__item__icon">#}
-{#                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="rgb(93.333333%,42.352941%,30.196078%)" fill-rule="evenodd" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#9a0000;"><path d="M5.488.363h21.75c1.78 0 2.43.184 3.082.535a3.66 3.66 0 0 1 1.512 1.512c.348.652.535 1.297.535 3.082v21.746c0 1.78-.187 2.43-.535 3.082a3.66 3.66 0 0 1-1.512 1.512c-.652.348-1.3.535-3.082.535H5.488c-1.78 0-2.43-.187-3.082-.535A3.66 3.66 0 0 1 .895 30.32c-.348-.652-.535-1.3-.535-3.082V5.488c0-1.78.188-2.43.535-3.082A3.71 3.71 0 0 1 2.406.895c.652-.348 1.3-.53 3.082-.53zm0 0"></path><path d="M44.563 49.69H22.816c-1.78 0-2.43-.184-3.082-.535-.645-.34-1.172-.867-1.512-1.512-.348-.652-.535-1.297-.535-3.082V22.816c0-1.78.184-2.43.535-3.082.34-.645.867-1.172 1.512-1.512.652-.348 1.3-.535 3.082-.535h21.746c1.785 0 2.43.188 3.082.535.645.34 1.172.867 1.512 1.512.352.652.535 1.3.535 3.082v21.746c0 1.785-.184 2.43-.535 3.082-.34.645-.867 1.172-1.512 1.512-.652.352-1.297.535-3.082.535zm0 0"></path></g><path d="M17.906 10.965c-.484 0-.875.387-.875.86v3.8L9.84 8.523c-.344-.336-.895-.336-1.238 0-.164.16-.254.38-.254.605a.86.86 0 0 0 .254.6l7.195 7.098h-3.875c-.484 0-.875.387-.875.86s.4.86.875.86h5.984a.88.88 0 0 0 .332-.066.86.86 0 0 0 .473-.465.79.79 0 0 0 .066-.328v-5.87c.004-.473-.387-.86-.87-.86zm14.418 28.008c.48 0 .87-.383.87-.86v-3.797l7.195 7.098a.88.88 0 0 0 1.234 0 .85.85 0 0 0 .258-.605c0-.23-.094-.45-.258-.605l-7.2-7.102h3.875c.484 0 .875-.383.875-.86s-.4-.855-.875-.855h-5.984a.92.92 0 0 0-.336.066c-.2.086-.383.25-.473.46a.88.88 0 0 0-.066.328v5.87c0 .477.4.86.875.86zm-10.1-10.1c-.355.352-.93.352-1.285 0s-.355-.934 0-1.3a.91.91 0 0 1 1.285 0c.355.352.355.934 0 1.3zm3.374-3.357a.91.91 0 0 1-1.285 0 .91.91 0 0 1 0-1.285c.352-.352.93-.352 1.285 0a.91.91 0 0 1 0 1.285zm3.36-3.364a.91.91 0 0 1-1.285 0 .91.91 0 0 1 0-1.285.91.91 0 0 1 1.285 0 .91.91 0 0 1 0 1.285zm0 0" fill="rgb(100%,100%,100%)" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#ffffff;"></path></svg>#}
-{#                </div>#}
-                <h3>{{  c_obj.c_name  }}</h3>
-{#                <div class="tools__item__content">#}
-{#                    <p>write your amgazing code here</p>#}
-{#                </div>#}
-            </a>
+    <div class="tools">
+        <div class="none_su"></div>
+        <div class="tools__container">
+            {% for c_obj in c_obj_q %}
+            <div class="tools__item" style="border-radius: 20%;">
+                <a href="http://127.0.0.1:80/blog/{{  c_obj.c_name  }}" title="Merge PDF">
+                    <h3 style="">{{  c_obj.c_name  }}</h3>
+                </a>
+            </div>
+             {% endfor %}
         </div>
-         {% endfor %}
+    <div class="none_su"></div>
+    <div class="none_su"></div>
+    <div class="none_su"></div>
+    <div class="none_su"></div>
+    <div class="none_su"></div>
+    <div class="none_su"></div>
+    </div>
 
+ </body>
+   {% include "public/footer.html" %}
+</html>
 
-
-
-<script>
-    function defer(method) {
-        if (window.jQuery) {
-            method();
-        } else {
-            setTimeout(function () {
-                defer(method)
-            }, 50);
-        }
-    }
-
-    defer(function(){
-        var menuContainer = $("#homepage-products-block__sticky-element");
-        var menuContainer_items = menuContainer.find(".sticky-bulb__lightable-item");
-        var carouselElem = $('#homepage-products-carousel');
-
-        carouselElem.carousel()
-        carouselElem.carousel('pause');
-        carouselElem.on('slide.bs.carousel', function (e) {
-            var idx = $(e.relatedTarget).attr('data-menu-idx');
-            menuContainer_items.removeClass("sticky-bulb__lightable-item--active");
-            menuContainer_items.filter('[data-menu-idx='+idx+']').addClass("sticky-bulb__lightable-item--active");
-        });
-
-        menuContainer_items.click(function(){
-            var clickedItem = $(this);
-            var idx = Number(clickedItem.attr('data-menu-idx'));
-            carouselElem.carousel(idx - 1);
-            carouselElem.carousel('pause');
-        });
-    })
-</script>
-
-
-
-    <script async="" src="{% static 'topic/js/analytics.js' %}"></script>
-    <script>
-        window.__browserSupports__ = [];
-        try{
-            var grid_supported = typeof document.createElement('div').style.grid === 'string';
-            if(grid_supported) window.__browserSupports__.push('grid');
-        }catch(e){}
-
-        document.addEventListener("DOMContentLoaded", function(event) {
-            document.body.setAttribute("data-browser-supports", window.__browserSupports__.join(" "));
-        });
-    </script>
-    <link href="{% static '/topic/css/web.25640cc.css' %}" rel="stylesheet">
-    <style type="text/css" abt="234"></style>
-    <script>//remove baidu search ad
-        var _countAA = 0
-        function doBBBd(){}
-        doBBBd()
-        document.addEventListener('keyup', function(){_countAA-=10;doBBBd()}, false)
-        document.addEventListener('click', function(){_countAA-=10;doBBBd()}, false)
-    </script>

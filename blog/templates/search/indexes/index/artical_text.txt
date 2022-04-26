@@ -1,0 +1,2 @@
+{{object.a_title}}
+{{object.auth_user_id.a_content}}

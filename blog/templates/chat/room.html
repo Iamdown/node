@@ -1,15 +1,267 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Document</title>
+	<link rel="stylesheet" href="/static/chat/chatrooms-html-master/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/chat/chatrooms-html-master/rolling/css/rolling.css">
+	<link rel="stylesheet" href="/static/chat/chatrooms-html-master/stylesheets/style.css">
+	<script type="text/javascript" src="/static/chat/chatrooms-html-master/javascripts/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="/static/chat/chatrooms-html-master/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/chat/chatrooms-html-master/rolling/js/rolling.js"></script>
+	<script type="text/javascript" src="/static/chat/chatrooms-html-master/javascripts/Public.js"></script>
+{#       {% include 'index/head.html' %}#}
     <title>聊天室</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        textarea{
+            margin-top: 100px;
+
+        }
+        input,textarea{
+            background-color: #757f8a;
+            color:#757f8a
+        }
+
+        .scrollbar-macosx{
+            margin-top: 60px;
+        }
+
+
+.left_triangle{
+            height:0;
+            width:0;
+            border-width:8px;
+            border-style:solid;
+            border-color:transparent #fff transparent transparent;
+            position: relative;
+            top: 12px;
+            left:-21px;
+        }
+{#757f8a#}
+
+.right_triangle{
+            height:0;
+            width:0;
+            border-width:8px;
+            border-style:solid;
+            border-color:transparent transparent transparent #fff;
+            position: relative;
+            top:15px;
+            right:-111px;
+            float: right;
+}
+
+.user_content{
+    max-width: 80%;
+    line-height: 20px;
+    background-color:#fff;
+    border-radius: 12px;
+    right: -80px;
+}
+
+img{
+    width: 20px;
+    height: 20px;
+}
+    </style>
 </head>
-<body>
-<textarea name="" id="chat-log" cols="50" rows="10"></textarea>
-<br>
-<input type="text" id="input" size="50">
-<br>
-<input type="button" id="submit" value="发送">
+
+<body class="room">
+
+{#{% include 'index/header.html' %}#}
+
+{#<textarea name="" id="chat-log" cols="50" rows="10"></textarea>#}
+{#<br>#}
+{#<input type="text" id="input" size="50">#}
+{#<br>#}
+{#<input type="button" id="submit" value="发送">#}
+
+
+	<div class="scrollbar-macosx">
+		<div class="header">
+			<div class="toptext">
+				<a href="index.html">
+					<span class="glyphicon glyphicon-arrow-left"></span> 返回大厅
+				</a>
+			</div>
+			<ul class="topnavlist">
+				<li class="userlist">
+					<a><span class="glyphicon glyphicon-th-list"></span>用户列表</a>
+					<div class="popover fade bottom in">
+						<div class="arrow"></div>
+						<h3 class="popover-title">在线用户{{ total }}人</h3>
+						<div class="popover-content scrollbar-macosx">
+
+							<ul>
+                                {% for user_obj in user_objs %}
+                                    <li>
+
+									<img src="/static/chat/chatrooms-html-master/images/user/12.png" alt="portrait_1">
+									<b>{{ user_obj.username }}</b>
+								</li>
+
+                                {% endfor %}
+
+
+
+							</ul>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="clapboard hidden"></div>
+		</div>
+		<div class="main container">
+			<div class="col-md-12">
+				<ul class="chat_info">
+					<li class="left">
+						<img src="/static/chat/chatrooms-html-master/images/user/12.png" alt="">
+                        <div class="user_content">
+                            <b>美国队长</b>
+                                <small >09:14</small>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="left_triangle" style="margin: 0;padding: 0"></div>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="user_word">怎么没人聊天的</span></p>
+                        </div>
+					</li>
+					<li class="systeminfo">
+						<span>【{{ cur_user }}】加入了房间</span>
+					</li>
+
+					<li class="left">
+
+						<img src="/static/chat/chatrooms-html-master/images/user/12.png" alt="">
+                        <div class="user_content">
+                            <b>美国队长</b>
+                            <small >09:15</small>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="left_triangle" style="margin: 0;padding: 0"></div>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span>嗨起来！！！</span></p>
+                        </div>
+
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="input">
+			<div class="center">
+				<div class="tools">
+
+					<span class="glyphicon glyphicon-heart face_btn"></span>
+					<span class="glyphicon glyphicon-picture imgFileico"></span>
+					<input type="file" class="imgFileBtn hidden" accept="image/*">
+					<div class="faces popover fade top in">
+						<div class="arrow"></div>
+						<h3 class="popover-title">表情包</h3>
+						<div class="popover-content scrollbar-macosx">
+							<img src="/static/chat/chatrooms-html-master/images/face/1.gif" alt="1">
+							<img src="/static/chat/chatrooms-html-master/images/face/2.gif" alt="2">
+							<img src="/static/chat/chatrooms-html-master/images/face/3.gif" alt="3">
+							<img src="/static/chat/chatrooms-html-master/images/face/4.gif" alt="4">
+							<img src="/static/chat/chatrooms-html-master/images/face/5.gif" alt="5">
+							<img src="/static/chat/chatrooms-html-master/images/face/6.gif" alt="6">
+							<img src="/static/chat/chatrooms-html-master/images/face/7.gif" alt="7">
+							<img src="/static/chat/chatrooms-html-master/images/face/8.gif" alt="8">
+							<img src="/static/chat/chatrooms-html-master/images/face/9.gif" alt="9">
+							<img src="/static/chat/chatrooms-html-master/images/face/10.gif" alt="10">
+							<img src="/static/chat/chatrooms-html-master/images/face/11.gif" alt="11">
+							<img src="/static/chat/chatrooms-html-master/images/face/12.gif" alt="12">
+							<img src="/static/chat/chatrooms-html-master/images/face/13.gif" alt="13">
+							<img src="/static/chat/chatrooms-html-master/images/face/14.gif" alt="14">
+							<img src="/static/chat/chatrooms-html-master/images/face/15.gif" alt="15">
+							<img src="/static/chat/chatrooms-html-master/images/face/16.gif" alt="16">
+							<img src="/static/chat/chatrooms-html-master/images/face/17.gif" alt="17">
+							<img src="/static/chat/chatrooms-html-master/images/face/18.gif" alt="18">
+							<img src="/static/chat/chatrooms-html-master/images/face/19.gif" alt="19">
+							<img src="/static/chat/chatrooms-html-master/images/face/20.gif" alt="20">
+							<img src="/static/chat/chatrooms-html-master/images/face/21.gif" alt="21">
+							<img src="/static/chat/chatrooms-html-master/images/face/22.gif" alt="22">
+							<img src="/static/chat/chatrooms-html-master/images/face/23.gif" alt="23">
+							<img src="/static/chat/chatrooms-html-master/images/face/24.gif" alt="24">
+							<img src="/static/chat/chatrooms-html-master/images/face/25.gif" alt="25">
+							<img src="/static/chat/chatrooms-html-master/images/face/26.gif" alt="26">
+							<img src="/static/chat/chatrooms-html-master/images/face/27.gif" alt="27">
+							<img src="/static/chat/chatrooms-html-master/images/face/28.gif" alt="28">
+							<img src="/static/chat/chatrooms-html-master/images/face/29.gif" alt="29">
+							<img src="/static/chat/chatrooms-html-master/images/face/30.gif" alt="30">
+							<img src="/static/chat/chatrooms-html-master/images/face/31.gif" alt="31">
+							<img src="/static/chat/chatrooms-html-master/images/face/32.gif" alt="32">
+							<img src="/static/chat/chatrooms-html-master/images/face/33.gif" alt="33">
+							<img src="/static/chat/chatrooms-html-master/images/face/34.gif" alt="34">
+							<img src="/static/chat/chatrooms-html-master/images/face/35.gif" alt="35">
+							<img src="/static/chat/chatrooms-html-master/images/face/36.gif" alt="36">
+							<img src="/static/chat/chatrooms-html-master/images/face/37.gif" alt="37">
+							<img src="/static/chat/chatrooms-html-master/images/face/38.gif" alt="38">
+							<img src="/static/chat/chatrooms-html-master/images/face/39.gif" alt="39">
+							<img src="/static/chat/chatrooms-html-master/images/face/40.gif" alt="40">
+							<img src="/static/chat/chatrooms-html-master/images/face/41.gif" alt="41">
+							<img src="/static/chat/chatrooms-html-master/images/face/42.gif" alt="42">
+							<img src="/static/chat/chatrooms-html-master/images/face/43.gif" alt="43">
+							<img src="/static/chat/chatrooms-html-master/images/face/44.gif" alt="44">
+							<img src="/static/chat/chatrooms-html-master/images/face/45.gif" alt="45">
+							<img src="/static/chat/chatrooms-html-master/images/face/46.gif" alt="46">
+							<img src="/static/chat/chatrooms-html-master/images/face/47.gif" alt="47">
+							<img src="/static/chat/chatrooms-html-master/images/face/48.gif" alt="48">
+							<img src="/static/chat/chatrooms-html-master/images/face/49.gif" alt="49">
+							<img src="/static/chat/chatrooms-html-master/images/face/50.gif" alt="50">
+							<img src="/static/chat/chatrooms-html-master/images/face/51.gif" alt="51">
+							<img src="/static/chat/chatrooms-html-master/images/face/52.gif" alt="52">
+							<img src="/static/chat/chatrooms-html-master/images/face/53.gif" alt="53">
+							<img src="/static/chat/chatrooms-html-master/images/face/54.gif" alt="54">
+							<img src="/static/chat/chatrooms-html-master/images/face/55.gif" alt="55">
+							<img src="/static/chat/chatrooms-html-master/images/face/56.gif" alt="56">
+							<img src="/static/chat/chatrooms-html-master/images/face/57.gif" alt="57">
+							<img src="/static/chat/chatrooms-html-master/images/face/58.gif" alt="58">
+							<img src="/static/chat/chatrooms-html-master/images/face/59.gif" alt="59">
+							<img src="/static/chat/chatrooms-html-master/images/face/60.gif" alt="60">
+							<img src="/static/chat/chatrooms-html-master/images/face/61.gif" alt="61">
+							<img src="/static/chat/chatrooms-html-master/images/face/62.gif" alt="62">
+							<img src="/static/chat/chatrooms-html-master/images/face/63.gif" alt="63">
+							<img src="/static/chat/chatrooms-html-master/images/face/64.gif" alt="64">
+							<img src="/static/chat/chatrooms-html-master/images/face/65.gif" alt="65">
+							<img src="/static/chat/chatrooms-html-master/images/face/66.gif" alt="66">
+							<img src="/static/chat/chatrooms-html-master/images/face/67.gif" alt="67">
+							<img src="/static/chat/chatrooms-html-master/images/face/68.gif" alt="68">
+							<img src="/static/chat/chatrooms-html-master/images/face/69.gif" alt="69">
+							<img src="/static/chat/chatrooms-html-master/images/face/70.gif" alt="70">
+							<img src="/static/chat/chatrooms-html-master/images/face/71.gif" alt="71">
+							<img src="/static/chat/chatrooms-html-master/images/face/72.gif" alt="72">
+							<img src="/static/chat/chatrooms-html-master/images/face/73.gif" alt="73">
+							<img src="/static/chat/chatrooms-html-master/images/face/74.gif" alt="74">
+							<img src="/static/chat/chatrooms-html-master/images/face/75.gif" alt="75">
+                            <img src="/static/chat/chatrooms-html-master/images/face/76.gif" alt="76">
+                            <img src="/static/chat/chatrooms-html-master/images/face/77.gif" alt="77">
+                            <img src="/static/chat/chatrooms-html-master/images/face/78.gif" alt="78">
+                            <img src="/static/chat/chatrooms-html-master/images/face/79.gif" alt="79">
+
+						</div>
+					</div>
+				</div>
+				<div class="text">
+					<div class="col-xs-10 col-sm-11">
+						<input type="text" class="form-control" placeholder="输入聊天信息...">
+					</div>
+					<div class="col-xs-2 col-sm-1">
+						<a id="subxx" role="button"><span class="glyphicon glyphicon-share-alt"></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+{#{% include "public/footer.html" %}#}
+
+</body>
+
+
+
+
 <script>
     var roomName = '{{ room_name }}';
 
@@ -44,6 +296,4 @@
     };
 
 </script>
-</body>
-
 </html>

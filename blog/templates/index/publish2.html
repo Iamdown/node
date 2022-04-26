@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+<title>Add artical | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/nav_sidebar.css">
+  <script src="/static/admin/js/nav_sidebar.js" defer></script>
+
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css">
+
+
+<script src="/admin/jsi18n/"></script>
+<link href="/static/mdeditor/css/editormd.css" type="text/css" media="all" rel="stylesheet">
+<script src="/static/admin/js/vendor/jquery/jquery.min.js"></script>
+<script src="/static/admin/js/calendar.js"></script>
+<script src="/static/mdeditor/js/jquery.min.js"></script>
+<script src="/static/admin/js/jquery.init.js"></script>
+<script src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+<script src="/static/mdeditor/js/editormd.min.js"></script>
+<script src="/static/admin/js/core.js"></script>
+<script src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script src="/static/admin/js/actions.js"></script>
+<script src="/static/admin/js/urlify.js"></script>
+<script src="/static/admin/js/prepopulate.js"></script>
+<script src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class=" app-index model-artical change-form"
+  data-admin-utc-offset="28800">
+
+<!-- Container -->
+<div id="container">
+
+
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+
+<h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+
+        </div>
+
+
+        <div id="user-tools">
+
+                Welcome,
+                <strong>root</strong>.
+
+
+
+                    <a href="/">View site</a> /
+
+
+
+
+
+
+                <a href="/admin/password_change/">Change password</a> /
+
+                <a href="/admin/logout/">Log out</a>
+
+        </div>
+
+
+
+    </div>
+    <!-- END Header -->
+
+<div class="breadcrumbs">
+<a href="/admin/">Home</a>
+&rsaquo; <a href="/admin/index/">前台</a>
+&rsaquo; <a href="/admin/index/artical/">Articals</a>
+&rsaquo; Add artical
+</div>
+
+
+
+    <div class="main shifted" id="main">
+
+
+
+<button class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar" aria-label="Toggle navigation"></button>
+<nav class="sticky" id="nav-sidebar">
+
+
+
+
+    <div class="app-auth module">
+      <table>
+        <caption>
+          <a href="/admin/auth/" class="section" title="Models in the Authentication and Authorization application">Authentication and Authorization</a>
+        </caption>
+
+          <tr class="model-group">
+
+              <th scope="row"><a href="/admin/auth/group/">Groups</a></th>
+
+
+
+              <td><a href="/admin/auth/group/add/" class="addlink">Add</a></td>
+
+
+
+          </tr>
+
+          <tr class="model-user">
+
+              <th scope="row"><a href="/admin/auth/user/">Users</a></th>
+
+
+
+              <td><a href="/admin/auth/user/add/" class="addlink">Add</a></td>
+
+
+
+          </tr>
+
+      </table>
+    </div>
+
+    <div class="app-index module current-app">
+      <table>
+        <caption>
+          <a href="/admin/index/" class="section" title="Models in the 前台 application">前台</a>
+        </caption>
+
+          <tr class="model-artical current-model">
+
+              <th scope="row"><a href="/admin/index/artical/" aria-current="page">Articals</a></th>
+
+
+
+              <td><a href="/admin/index/artical/add/" class="addlink">Add</a></td>
+
+
+
+          </tr>
+
+          <tr class="model-categroy">
+
+              <th scope="row"><a href="/admin/index/categroy/">Categroys</a></th>
+
+
+
+              <td><a href="/admin/index/categroy/add/" class="addlink">Add</a></td>
+
+
+
+          </tr>
+
+          <tr class="model-comment">
+
+              <th scope="row"><a href="/admin/index/comment/">Comment</a></th>
+
+
+
+              <td><a href="/admin/index/comment/add/" class="addlink">Add</a></td>
+
+
+
+          </tr>
+
+          <tr class="model-topic">
+
+              <th scope="row"><a href="/admin/index/topic/">Topics</a></th>
+
+
+
+              <td><a href="/admin/index/topic/add/" class="addlink">Add</a></td>
+
+
+
+          </tr>
+
+      </table>
+    </div>
+
+
+
+</nav>
+
+
+
+      <div class="content">
+
+
+
+        <!-- Content -->
+        <div id="content" class="colM">
+
+          <h1>Add artical</h1>
+
+          <div id="content-main">
+
+
+
+<form method="post" id="artical_form" novalidate><input type="hidden" name="csrfmiddlewaretoken" value="QDtHO7rgS3HHIfv1lFtgx86pTa9FuNOKmMO84GV3dBbxHMwTKcMVG6MBZMDKswwl">
+<div>
+
+
+
+
+
+
+
+  <fieldset class="module aligned ">
+
+
+
+        <div class="form-row field-a_title">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_title">A title:</label>
+
+                            <input type="text" name="a_title" class="vTextField" maxlength="300" required id="id_a_title">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_auth_name">
+
+
+                <div>
+
+
+                        <label for="id_a_auth_name">A auth name:</label>
+
+                            <input type="text" name="a_auth_name" value="无名" class="vTextField" maxlength="50" id="id_a_auth_name">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_publish_date">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_publish_date">A publish date:</label>
+
+                            <input type="text" name="a_publish_date" class="vDateField" size="10" required id="id_a_publish_date">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_publish_time">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_publish_time">A publish time:</label>
+
+                            <input type="text" name="a_publish_time" class="vTimeField" size="8" required id="id_a_publish_time">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-a_content">
+
+
+                <div>
+
+
+                        <label class="required" for="id_a_content">文章内容:</label>
+
+
+<style type="text/css">
+    .wmd-wrapper  ul {
+        margin-left: 0px !important;
+    }
+    .wmd-wrapper ul li{
+        list-style: disc !important;
+    }
+    .wmd-wrapper ul ul li{
+        list-style: circle !important;
+    }
+    .wmd-wrapper h1,
+    .wmd-wrapper h2,
+    .wmd-wrapper h3,
+    .wmd-wrapper h4,
+    .wmd-wrapper h5,
+    .wmd-wrapper h6 {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    .wmd-wrapper h2,
+    .wmd-wrapper h3,
+    .wmd-wrapper h4{
+        padding: 0px !important;
+    }
+    .wmd-wrapper h5{
+        letter-spacing: 0px !important;
+        text-transform: none !important;
+        font-size: 1em !important;
+    }
+    .wmd-wrapper h6{
+        font-size: 1em !important;
+        color: #777 !important;
+    }
+</style>
+
+<div class="wmd-wrapper"  id="id_a_content-wmd-wrapper">
+  <textarea  cols="40" id="id_a_content" name="a_content" rows="10" required></textarea>
+</div>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        editormd("id_a_content-wmd-wrapper", {
+            watch: true, // 关闭实时预览
+            lineNumbers: false,
+            lineWrapping: false,
+            width: "90% ",
+            height: 500,
+            placeholder: '',
+            // 当有多个mdeditor时，全屏后，其他mdeditor仍然显示，解决此问题。
+            onfullscreen : function() {
+                this.editor.css("border-radius", 0).css("z-index", 9999);
+            },
+            onfullscreenExit : function() {
+                this.editor.css({
+                    zIndex : 10,
+                    border : "1px solid rgb(221,221,221)"
+                })
+            },
+            syncScrolling: "single",
+            path: "/static/mdeditor/js/lib" + "/",
+            // theme
+            theme : "default",
+            previewTheme : "default",
+            editorTheme : "default",
+
+            saveHTMLToTextarea: true, // editor.md 有问题没有测试成功
+            toolbarAutoFixed: true,
+            searchReplace: true,
+            emoji: true,
+            tex: true,
+            taskList: false,
+            flowChart: true,
+            sequenceDiagram: true,
+
+            // image upload
+            imageUpload: true,
+            imageFormats: ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'webp'],
+            imageUploadURL: "/mdeditor/uploads/",
+            toolbarIcons: function () {
+                return ['undo', 'redo', '|', 'bold', 'del', 'italic', 'quote', 'ucwords', 'uppercase', 'lowercase', '|', 'h1', 'h2', 'h3', 'h5', 'h6', '|', 'list-ul', 'list-ol', 'hr', '|', 'link', 'reference-link', 'image', 'code', 'preformatted-text', 'code-block', 'table', 'datetimeemoji', 'html-entities', 'pagebreak', 'goto-line', '|', 'help', 'info', '||', 'preview', 'watch', 'fullscreen']
+            },
+            onload: function () {
+                console.log('onload', this);
+                //this.fullscreen();
+                //this.unwatch();
+                //this.watch().fullscreen();
+
+                //this.setMarkdown("#PHP");
+                //this.width("100%");
+                //this.height(480);
+                //this.resize("100%", 640);
+            }
+        });
+
+    });
+</script>
+
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-category">
+
+
+                <div>
+
+
+                        <label class="required" for="id_category">Category:</label>
+
+                            <div class="related-widget-wrapper">
+    <select name="category" required id="id_category">
+  <option value="" selected>---------</option>
+
+  <option value="1">Python</option>
+
+  <option value="2">Java</option>
+
+  <option value="3">MySQL</option>
+
+  <option value="4">Hadoop</option>
+
+  <option value="5">sk-learn</option>
+
+  <option value="6">Django</option>
+
+</select>
+
+        <a class="related-widget-wrapper-link change-related" id="change_id_category"
+            data-href-template="/admin/index/categroy/__fk__/change/?_to_field=c_id&amp;_popup=1"
+            title="Change selected categroy"><img src="/static/admin/img/icon-changelink.svg" alt="Change"></a><a class="related-widget-wrapper-link add-related" id="add_id_category"
+            href="/admin/index/categroy/add/?_to_field=c_id&amp;_popup=1"
+            title="Add another categroy"><img src="/static/admin/img/icon-addlink.svg" alt="Add"></a>
+
+</div>
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-auth_user">
+
+
+                <div>
+
+
+                        <label class="required" for="id_auth_user">Auth user:</label>
+
+                            <div class="related-widget-wrapper">
+    <select name="auth_user" required id="id_auth_user">
+  <option value="" selected>---------</option>
+
+  <option value="2">root</option>
+
+  <option value="1">zuhua</option>
+
+</select>
+
+        <a class="related-widget-wrapper-link change-related" id="change_id_auth_user"
+            data-href-template="/admin/auth/user/__fk__/change/?_to_field=id&amp;_popup=1"
+            title="Change selected user"><img src="/static/admin/img/icon-changelink.svg" alt="Change"></a><a class="related-widget-wrapper-link add-related" id="add_id_auth_user"
+            href="/admin/auth/user/add/?_to_field=id&amp;_popup=1"
+            title="Add another user"><img src="/static/admin/img/icon-addlink.svg" alt="Add"></a>
+
+</div>
+
+
+
+                </div>
+
+        </div>
+
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="submit-row">
+
+<input type="submit" value="Save" class="default" name="_save">
+
+
+<input type="submit" value="Save and add another" name="_addanother">
+<input type="submit" value="Save and continue editing" name="_continue">
+
+
+</div>
+
+
+
+    <script id="django-admin-form-add-constants"
+            src="/static/admin/js/change_form.js"
+
+                data-model-name="artical"
+
+            async>
+    </script>
+
+
+
+
+<script id="django-admin-prepopulated-fields-constants"
+        src="/static/admin/js/prepopulate_init.js"
+        data-prepopulated-fields="[]">
+</script>
+
+
+</div>
+</form></div>
+
+
+          <br class="clear">
+        </div>
+        <!-- END Content -->
+        <div id="footer"></div>
+      </div>
+    </div>
+</div>
+<!-- END Container -->
+</body>
+</html>

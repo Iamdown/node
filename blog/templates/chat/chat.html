@@ -1,15 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+           {% include 'index/head.html' %}
     <meta charset="UTF-8">
     <title>Chat Rooms</title>
 </head>
+
+
 <body>
+{% include 'index/header.html' %}
+<br><br><br>
     <div> 请输入聊天室名称:</div>
     <br>
     <input type="text" id="input" size="30" >
     <br>
     <input type="button" id="submit" value="进入">
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include "public/footer.html" %}
 </body>
 
 <script>

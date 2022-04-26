@@ -4,6 +4,7 @@ from .models import Artical,Categroy,Comment
 from .pages import MyPage
 from .settings import page_num_show,per_page_num
 import requests
+from urllib.parse import quote
 import json
 import ssl
 import re
@@ -15,12 +16,60 @@ from markdown.extensions.toc import TocExtension
 from django.shortcuts import get_object_or_404, render
 from datetime import datetime
 import time
+import string
 from django.contrib.auth.models import User
+from django.db.models import Q
+from haystack.views import SearchView
+from drf_haystack.viewsets import HaystackViewSet
+from django.core.paginator import Paginator
+from .serializer import *
 ssl._create_default_https_context = ssl._create_unverified_context
-
-
-
 headers ={"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"}
+
+
+def get_baidu_new():
+    header = {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "Accept-Encoding": "default",
+        "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "Cookie": 'BIDUPSID=87F2E50C4E02FFA062334CC605BAF47F; PSTM=1650046794; BD_UPN=123253; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; BAIDUID=87F2E50C4E02FFA07135C8C76EA73E59:SL=0:NR=10:FG=1; sug=0; sugstore=0; ORIGIN=2; bdime=0; H_PS_PSSID=31254_34813_35914_36165_34584_36120_36074_36126_36297_36233_26350_35868_22157_36061; delPer=0; BD_CK_SAM=1; PSINO=1; BD_HOME=1; COOKIE_SESSION=8832_0_7_7_7_6_1_0_7_3_0_3_8999_0_174_0_1650115078_0_1650114904%7C8%230_0_1650114904%7C1; av1_switch_v3=0; ariaDefaultTheme=undefined; RT="z=1&dm=baidu.com&si=up4913lg8po&ss=l21w3ecc&sl=2&tt=w1&bcn=https%3A%2F%2Ffclog.baidu.com%2Flog%2Fweirwood%3Ftype%3Dperf&ld=1zn&ul=5j7&hd=5k2"; channel=baidusearch; baikeVisitId=fa50f9f3-c814-43ae-924d-32dd80dc0ab1; ab_sr=1.0.1_ZmFiM2ExZjQ1NWZjNDg5YmQ1MWMyNTBhZTc2YTgzOTc2ZmM1NmNjM2U1ZjExNjgzZTc3Y2RiMmI0MDQ1MzE5ZDM5MGYyNTE3MTFhYmMwMDUzYjU4MGQ5OGJiYmIwMjJmNDk5NjU4MWEyNjczZjRhMDVkYmQwODcyNzE0NDJkODkwMmQ1OGM4NmM4NDY2ZmQ3ZDRmNDIxODU4MGM0M2FhZg==; BDRCVFR[S4-dAuiWMmn]=mk3SLVN4HKm; H_PS_645EC=a0ecV2AdgOGSqUjO7TfMYaRjZ2sfp82RYc9LOvp%2FNMGlTFRTdMOQ%2F1tVyKhOsYtArg; BA_HECTOR=802g2l8h8421al85tl1h5lhf00q',
+        "Host": "www.baidu.com",
+        "Pragma": "no-cache",
+        "sec-ch-ua": '" Not A;Brand";v="99", "Chromium";v="100", "Google Chrome";v="100"',
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": '"macOS"',
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36",
+    }
+    url = "https://www.baidu.com"
+    res = requests.get(url=url,headers=header)
+    element = etree.HTML(res.text)
+    other_title =  json.loads(element.xpath("//textarea[@id='hotsearch_data']/text()")[0])["hotsearch"]
+    url_list = []
+    for item  in other_title:
+        title = item["pure_title"]
+        url = f"https://www.baidu.com/s?wd={title}"
+        url = quote(url,safe=string.printable)
+        # res = requests.get(url=url,headers=headers)
+        # res.encoding = "gb2312"
+        # element = etree.HTML(res.text)
+        # try:
+        #     ture_url = element.xpath("//div[@id='content_left']/div//p[@class='title_2e25d']/a/@href")[0]
+        # except Exception as e:
+        #     print(e)
+        #     ture_url = ''
+        # print(title,ture_url)
+
+        data_dict ={title:url}
+        url_list.append(data_dict)
+    return url_list
+
 
 def get_keke_htm():
 
@@ -49,17 +98,17 @@ def get_keke_htm():
 
 
 #获取背景图片
-def get_header_background_img():
+def get_404_background_img(request):
 
     url ="https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&nc=1621244458742&pid=hp&uhd=1&uhdwidth=3840&uhdheight=2160"
     res = requests.get(url=url,headers=headers)
     img_data = json.loads(res.text)
     if img_data:
        img_url =  "https://www.bing.com"+img_data['images'][0]['url']
-       return img_url
+       return render(request,'404.html',{"img_url":img_url})
 
 #获取背景图片
-def get_bottom_background_img():
+def get_500_background_img(request):
 
     url = 'https://cn.bing.com/HPImageArchive.aspx?format=hp&idx=0&n=1&nc=1621337488211&pid=hp&FORM=BEHPTB&ensearch=1&quiz=1&og=1&uhd=1&uhdwidth=3840&uhdheight=2160&IG=8B725D5CD1E04A15B34B936E77EBDC49&IID=SERP.1050'
     res = requests.get(url=url,headers=headers)
@@ -68,7 +117,7 @@ def get_bottom_background_img():
     img_data = json.loads(text)
     if img_data:
        img_url =  "https://www.bing.com"+img_data['images'][0]['url']
-       return img_url
+       return  render(request,'500.html',{"img_url":img_url})
 
 #获取每日内容
 def get_sentence():
@@ -83,6 +132,55 @@ def get_sentence():
     note = dailysentence['note']
     return content,note
 
+
+
+class BlogSearchViewSet(HaystackViewSet):
+
+    """
+    返回博客文章搜索列表
+
+    """
+    index_models = [Artical]
+    serializer_class = BlogIndexSerializer
+
+#搜索
+class BlogSearchView(SearchView):
+    # 重写template的位置
+    template = 'search/search.html'
+
+    def get_context(self):
+        context = super(BlogSearchView, self).get_context()
+
+        results = self.results
+        # 当搜索引擎找不到时，重新从数据库中找一遍
+        if results.__len__() <= 1:
+            results = []
+            search_blogs = Artical.objects.filter(Q(a_title__contains=self.query) | Q(a_content__icontains=self.query)).order_by('-a_publish_date')
+            for search_blog in search_blogs:
+                results.append( search_blog)
+            # 将result结果返回为Blog列表   #results.values('object')
+        else:
+            results = [blog["object"] for blog in results.values("object")]
+        total = len(results)
+        context.update({
+            'title': '博客搜索',
+            'results': results,
+            'total':total,
+        })
+        return context
+
+#简单全文搜索
+def search_simple(request):
+    q = request.GET.get('q')
+    error_msg = ''
+    if not q:
+        error_msg = "请输入关键词"
+        return render(request, 'index/detail.html', {'error_msg': error_msg})
+    post_list = Artical.objects.filter(Q(a_title__icontains=q) | Q(a_content__icontains=q))
+    return render(request, 'index/detail.html', {'error_msg': error_msg,
+                                               'post_list': post_list})
+
+
 #首页
 def index(request,*args,**kwargs):
 
@@ -91,26 +189,20 @@ def index(request,*args,**kwargs):
         username = request.user.username
         if cookie and session and cookie==session:
             content = get_sentence()
-            print(content)
-            background_img_url = get_header_background_img()
-            #get_bottom_img_url = get_bottom_background_img()
+         #   titles_urls  = get_baidu_new()
             return render(request, 'index/index.html',
                                                     {
                                                     'username':username,
                                                     'content':content[0],
                                                     'note':content[1],
-                                                    'background_img_url':background_img_url,
-                                               #     'get_bottom_img_url':get_bottom_img_url,
+                         #                               "titles_urls":titles_urls
                                                      }
                           )
-        # else:
-        #     return redirect('user:signin')
         return render(request,'index/index.html')
 
 
 #详情页
 def detail(request, pk):
-
     post = get_object_or_404(Artical, pk=pk)
     md = markdown.Markdown(extensions=[
                                       'markdown.extensions.extra',
@@ -121,20 +213,20 @@ def detail(request, pk):
                                                  ])
     post.a_content = md.convert(post.a_content)
     post.toc = md.toc
-    if "<p>" in post.a_content and "\n" in post.a_content:
-          post.a_content = post.a_content.replace('\n','<br>')
-    if "<ol>" in post.a_content:
-        post.a_content = post.a_content.replace(r'<ol>','<ul>')
-    # n = post.a_content.count('<div class="codehilite">', 0, len(post.a_content))
-    # for i in range(n):
-    #
-    #     post.a_content = re.sub(r'<div class="codehilite">',
-    #                             '<div class="codehilite" id="code{}">'
-    #                             '<button id="ecodecopy" style="float:'
-    #                             ' right;z-index:10" class="copybtn"'
-    #                             ' data-clipboard-action="copy"'
-    #                             'data-clipboard-target="#code{}">复制'
-    #                             '</button>'.format(i, i), post.a_content, 1)
+    # if "<p>" in post.a_content and "\n" in post.a_content:
+    #       print("wwwwwwwpk:",pk)
+    #       post.a_content = post.a_content.replace('\n','<br>')
+    # if "<ol>" in post.a_content:
+    #     post.a_content = post.a_content.replace(r'<ol>','<ul>')
+    n = post.a_content.count('<pre class="codehilite">', 0, len(post.a_content))
+    for i in range(n):
+        post.a_content = re.sub(r'<pre class="codehilite">',
+                                '<pre class="codehilite" id="code{}">'
+                                '<button  style="float:'
+                                'right;z-index:10;background-color:#21262d;display:none;color:#A9B7C6" class="copybtn"'
+                                ' data-clipboard-action="copy"'
+                                'data-clipboard-target="#code{}">复制'
+                                '</button>'.format(i, i), post.a_content, 1)
     m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
     post.toc = m.group(1) if m is not None else ''
     return render(request,'index/detail.html',context={'post': post})
@@ -173,7 +265,6 @@ def add_comment(request):  # 提交评论的处理函数
         # else:
         #     res = get_comment_datas(article_id)
         #     return HttpResponse(json.dumps(res))
-
         # JsonResponse返回JSON字符串，自动序列化,
         # 如果不是字典类型，则需要添加safe参数为False
     else:
@@ -250,6 +341,7 @@ def get_comment(request,pk):
 def blog(request,c_name):
 
     c_obj = Categroy.objects.filter(c_name=c_name) #获取当类别的id
+
     if  not c_obj:
         return HttpResponse("sorry,do not have result...  please add a new categroy")
     else:
@@ -261,14 +353,16 @@ def blog(request,c_name):
     # 获取路径
     req_path = request.path_info
     datasSet = Artical.objects.filter(category=c_id)
+
     page_num_count = datasSet.count()
     # 封装的分页组件
     page_obj = MyPage(page_num, page_num_count, req_path, per_page_num, page_num_show)
     page_html = page_obj.page_html()
     # 获取所有的数据
     datas_list = datasSet[page_obj.start_data_num:page_obj.end_data_num][:10:]
+
     #查询用户名#https://pan.baidu.com/s/1c2DCauW <span class="ff1">密码：</span>5k19</span>
-    return render(request,'index/555.html', { 'datas_list': datas_list,'page_html': page_html})
+    return render(request,'index/blog.html', { 'datas_list': datas_list,'page_html': page_html,"total":page_num_count})
 
 
 def center(request):
@@ -307,7 +401,6 @@ def publish(request):
 
 #主题
 def categroy(request):
-
     c_obj_q = Categroy.objects.all()
     return render(request,'index/categroy.html',context={"c_obj_q":c_obj_q})
 

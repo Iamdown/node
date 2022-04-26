@@ -8,7 +8,7 @@ class LoginRequiredMiddleware:
         self.login_url =   settings.LOGIN_URL
 
         self.open_urls = [self.login_url] + getattr(settings, 'OPEN_URLS', [])
-        print(self.open_urls)
+        # print(self.open_urls)
 
     def __call__(self, request):
 
