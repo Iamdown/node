@@ -18,9 +18,13 @@ def permission_denied(request,exception=None):
 def page_not_found(request,exception=None):
     return render(request, '404.html',status=404)
 
-def page_error(request,exception=None):
-    return render(request, '500.html',status=500)
+# def page_error(request,exception=None):
+#     return render(request, '500.html',status=500)
 
 
 
-
+# def page_not_found(request,**kwargs):
+#     # 全局404处理函数
+#     response = render_to_response('404.html', {})
+#     response.status_code = 404
+#     return response

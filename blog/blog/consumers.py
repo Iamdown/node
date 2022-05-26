@@ -33,10 +33,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json["message"]
         # Send message to room group
+       # print("text_data:",text_data)
         await self.channel_layer.group_send(
             self.room_group_name,
                 {
                     'type': 'chat_message',
+
                     'message':self.scope['user'].username+": "  +message
                 }
             )

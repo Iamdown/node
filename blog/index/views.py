@@ -150,7 +150,6 @@ class BlogSearchView(SearchView):
 
     def get_context(self):
         context = super(BlogSearchView, self).get_context()
-
         results = self.results
         # 当搜索引擎找不到时，重新从数据库中找一遍
         if results.__len__() <= 1:
@@ -229,6 +228,7 @@ def detail(request, pk):
                                 '</button>'.format(i, i), post.a_content, 1)
     m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
     post.toc = m.group(1) if m is not None else ''
+    print("content2:",post.a_content)
     return render(request,'index/detail.html',context={'post': post})
 
 
@@ -341,7 +341,6 @@ def get_comment(request,pk):
 def blog(request,c_name):
 
     c_obj = Categroy.objects.filter(c_name=c_name) #获取当类别的id
-
     if  not c_obj:
         return HttpResponse("sorry,do not have result...  please add a new categroy")
     else:
@@ -353,14 +352,12 @@ def blog(request,c_name):
     # 获取路径
     req_path = request.path_info
     datasSet = Artical.objects.filter(category=c_id)
-
     page_num_count = datasSet.count()
     # 封装的分页组件
     page_obj = MyPage(page_num, page_num_count, req_path, per_page_num, page_num_show)
     page_html = page_obj.page_html()
     # 获取所有的数据
     datas_list = datasSet[page_obj.start_data_num:page_obj.end_data_num][:10:]
-
     #查询用户名#https://pan.baidu.com/s/1c2DCauW <span class="ff1">密码：</span>5k19</span>
     return render(request,'index/blog.html', { 'datas_list': datas_list,'page_html': page_html,"total":page_num_count})
 
@@ -379,6 +376,7 @@ def publish(request):
         title = request.POST.get('title')
         auth_name = request.POST.get('auth_name')
         content = request.POST.get('content')
+        print("content:",content)
         publish_date = request.POST.get('publish_date')
         publish_time = request.POST.get('publish_time')
         publish_date = datetime.strptime(publish_date, '%Y-%m-%d').date()

@@ -234,10 +234,8 @@ MDEDITOR_CONFIGS = {
         'flow_chart': True,  # whether to open the flow chart function   是否打开流程图功能
         'sequence': True  # Whether to open the sequence diagram function   是否打开序列图函数
     }
-
-
-
 }
+
 
 APPEND_SLASH=False
 AUTH_USER_MODEL="auth.User"
@@ -280,7 +278,7 @@ HAYSTACK_CONNECTIONS = {
     }
 }
 #显示多个搜索结果
-HAYSTACK_SEARCH_RESULT_PER_PAGE = 10
+HAYSTACK_SEARCH_RESULT_PER_PAGE = 2
 # 添加此项，当数据库改变时，会自动更新索引，非常方便
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

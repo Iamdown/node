@@ -7,6 +7,8 @@
 
 $(document).ready(function(){
 
+
+
 // -------------------------登录页面---------------------------------------------------
 	// 登录按钮
 	$('#login').click(function(event) {
@@ -113,13 +115,15 @@ $(document).ready(function(){
 		str = str.replace(/\>/g,'&gt;');
 		str = str.replace(/\n/g,'<br/>');
 		str = str.replace(/\[em_([0-9]*)\]/g,'<img src="/static/chat/chatrooms-html-master/images/face/$1.gif" alt="" />');
+		console.log("public:",str)
 		if(str!=''){
 			var userName = $(".systeminfo>span").text().split("【")[1].split("】加入了房间")[0];
-			sends_message(userName, 1, str); // sends_message(昵称,头像id,聊天内容);
+			sends_message(userName, 8, str); // sends_message(昵称,头像id,聊天内容);
 			// 滚动条滚到最下面
 			$('.scrollbar-macosx.scroll-content.scroll-scrolly_visible').animate({
 				scrollTop: $('.scrollbar-macosx.scroll-content.scroll-scrolly_visible').prop('scrollHeight')
 			}, 500);
+
 
 		}
 		$('.text input').val(''); // 清空输入框
@@ -157,7 +161,7 @@ $(document).ready(function(){
 // -----下边的代码不用管---------------------------------------
 
 
-
+ //用户列表显示
 	jQuery('.scrollbar-macosx').scrollbar();
 	$('.topnavlist li a').click(function(event) {
 		$('.topnavlist .popover').not($(this).next('.popover')).removeClass('show');
@@ -205,16 +209,21 @@ $(document).ready(function(){
 	$('.imgFileico').click(function(event) {
 		$('.imgFileBtn').click();
 	});
-	function sends_message (userName, userPortrait, message) {//
+	function sends_message (userName, userPortrait, message) {
+		console.log("aa:",userName,userPortrait,message)
 		if(message!='') {
-
 			$('.main .chat_info').html($('.main .chat_info').html() + '<li class="right"><img src="/static/chat/chatrooms-html-master/images/user/' + userPortrait + '.png"><div class="user_content"><b style="text-align: right;margin: 0;padding: 0;font-weight: bold;float: right">' + userName + '&nbsp;&nbsp;&nbsp;&nbsp;</b>  <small style="position: sticky;float: right;" >09:16&nbsp;&nbsp;</small><div class="right_triangle" style="margin: 0;padding: 0;"></div><br><div style="margin: 0;padding: 0;word-wrap:break-word;text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;' + message  +'&nbsp;&nbsp;&nbsp;&nbsp;</div></div></li>');
 
-		}
-	}//
+
+
+		}}
+
+
 	$('.text input').keypress(function(e){
 		if (e.which == 13){
 			$('#subxx').click();
 		}
 	});
+
+
 });

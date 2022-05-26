@@ -11,8 +11,8 @@
 	<script type="text/javascript" src="/static/chat/chatrooms-html-master/javascripts/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="/static/chat/chatrooms-html-master/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/static/chat/chatrooms-html-master/rolling/js/rolling.js"></script>
-	<script type="text/javascript" src="/static/chat/chatrooms-html-master/javascripts/Public.js"></script>
-{#       {% include 'index/head.html' %}#}
+{#	<script type="text/javascript" src="/static/chat/chatrooms-html-master/javascripts/Public.js"></script>#}
+       {% include 'index/head.html' %}
     <title>聊天室</title>
     <style>
         *{
@@ -21,11 +21,20 @@
         }
         textarea{
             margin-top: 100px;
+            border: none;
 
         }
-        input,textarea{
-            background-color: #757f8a;
-            color:#757f8a
+        input{
+            {#background-color: #757f8a;#}
+            color:#757f8a;
+
+
+        }
+        #chat-log{
+            width: 600px;
+            height: 300px;
+            background-color: #f3f3f2;
+
         }
 
         .scrollbar-macosx{
@@ -41,7 +50,8 @@
             border-color:transparent #fff transparent transparent;
             position: relative;
             top: 12px;
-            left:-21px;
+            left:-16px;
+
         }
 {#757f8a#}
 
@@ -52,41 +62,41 @@
             border-style:solid;
             border-color:transparent transparent transparent #fff;
             position: relative;
-            top:15px;
-            right:-111px;
+            top:16px;
+            right:-16px;
             float: right;
 }
 
 .user_content{
     max-width: 80%;
-    line-height: 20px;
+    {#line-height: 20px;#}
     background-color:#fff;
     border-radius: 12px;
-    right: -80px;
+    {#right: -180px;#}
 }
 
 img{
     width: 20px;
     height: 20px;
 }
+
+body{
+	color:black;
+}
+
+footer{
+    bottom: 0;
+}
     </style>
 </head>
 
 <body class="room">
-
-{#{% include 'index/header.html' %}#}
-
-{#<textarea name="" id="chat-log" cols="50" rows="10"></textarea>#}
-{#<br>#}
-{#<input type="text" id="input" size="50">#}
-{#<br>#}
-{#<input type="button" id="submit" value="发送">#}
-
+{% include 'index/header.html' %}
 
 	<div class="scrollbar-macosx">
 		<div class="header">
 			<div class="toptext">
-				<a href="index.html">
+				<a href="{% url 'index:index' %}">
 					<span class="glyphicon glyphicon-arrow-left"></span> 返回大厅
 				</a>
 			</div>
@@ -96,7 +106,7 @@ img{
 					<div class="popover fade bottom in">
 						<div class="arrow"></div>
 						<h3 class="popover-title">在线用户{{ total }}人</h3>
-						<div class="popover-content scrollbar-macosx">
+						<div class="popover-content">
 
 							<ul>
                                 {% for user_obj in user_objs %}
@@ -117,32 +127,11 @@ img{
 			</ul>
 			<div class="clapboard hidden"></div>
 		</div>
-		<div class="main container">
-			<div class="col-md-12">
+		<div class="main container1">
+			<div class="col-md-121">
 				<ul class="chat_info">
-					<li class="left">
-						<img src="/static/chat/chatrooms-html-master/images/user/12.png" alt="">
-                        <div class="user_content">
-                            <b>美国队长</b>
-                                <small >09:14</small>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <div class="left_triangle" style="margin: 0;padding: 0"></div>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="user_word">怎么没人聊天的</span></p>
-                        </div>
-					</li>
 					<li class="systeminfo">
-						<span>【{{ cur_user }}】加入了房间</span>
-					</li>
-
-					<li class="left">
-
-						<img src="/static/chat/chatrooms-html-master/images/user/12.png" alt="">
-                        <div class="user_content">
-                            <b>美国队长</b>
-                            <small >09:15</small>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <div class="left_triangle" style="margin: 0;padding: 0"></div>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span>嗨起来！！！</span></p>
-                        </div>
-
+						<span style="color: #fff">【{{ cur_user }}】加入了房间</span>
 					</li>
 				</ul>
 			</div>
@@ -157,7 +146,7 @@ img{
 					<div class="faces popover fade top in">
 						<div class="arrow"></div>
 						<h3 class="popover-title">表情包</h3>
-						<div class="popover-content scrollbar-macosx">
+						<div class="popover-content">
 							<img src="/static/chat/chatrooms-html-master/images/face/1.gif" alt="1">
 							<img src="/static/chat/chatrooms-html-master/images/face/2.gif" alt="2">
 							<img src="/static/chat/chatrooms-html-master/images/face/3.gif" alt="3">
@@ -251,49 +240,167 @@ img{
 				</div>
 			</div>
 		</div>
+
+
 	</div>
 
 
-
-{#{% include "public/footer.html" %}#}
-
+    {% include "public/footer.html" %}
 </body>
 
 
 
 
+{#<script>#}
+{#			 var roomName = '{{ room_name }}';#}
+{#			 var chatSocket = new WebSocket('ws://'+window.location.host+'/ws/chat/'+roomName+'/');#}
+{#			chatSocket.onmessage = function(e){#}
+{#				var data = JSON.parse(e.data);#}
+{#				var message = data['message']#}
+{#				document.querySelector('#chat-log').value+=(message+'\n');#}
+{#			};#}
+{#			chatSocket.onclose = function(e){#}
+{#						console.log('websocket 断开: ' + e.code + ' ' + e.reason + ' ' + e.wasClean);#}
+{#				console.error('Chat socket closed unexpectedly');#}
+{#			};#}
+{#			document.querySelector('#input').focus();#}
+{#			document.querySelector('#input').onkeyup = function(e){#}
+{#				if (e.keyCode===13){#}
+{#					document.querySelector('#submit').click();#}
+{#				}#}
+{#			};#}
+{#			document.querySelector('#submit').onclick = function(e){#}
+{#				var messageInputDom = document.querySelector('#input');#}
+{#				var message = messageInputDom.value;#}
+{#				chatSocket.send(JSON.stringify(#}
+{#					{'message':message}#}
+{#					)#}
+{#				);#}
+{#				messageInputDom.value = '';#}
+{#			};#}
+{##}
+{#</script>#}
+
 <script>
-    var roomName = '{{ room_name }}';
+     //用户列表显示
+	jQuery('.scrollbar-macosx').scrollbar();
+	$('.topnavlist li a').click(function(event) {
+		$('.topnavlist .popover').not($(this).next('.popover')).removeClass('show');
+		$(this).next('.popover').toggleClass('show');
+		if($(this).next('.popover').attr('class')!='popover fade bottom in') {
+			$('.clapboard').removeClass('hidden');
+		}else{
+			$('.clapboard').click();
+		}
+	});
+	$('.clapboard').click(function(event) {
+		$('.topnavlist .popover').removeClass('show');
+		$(this).addClass('hidden');
+		$('.user_portrait img').attr('portrait_id', $('.user_portrait img').attr('ptimg'));
+		$('.user_portrait img').attr('src', 'images/user/' + $('.user_portrait img').attr('ptimg') + '.png');
+		$('.select_portrait img').removeClass('t');
+		$('.select_portrait img').eq($('.user_portrait img').attr('ptimg')-1).addClass('t');
+		$('.rooms .user_name input').val('');
+	});
+    $('.select_portrait img').hover(function() {
+		var portrait_id = $(this).attr('portrait_id');
+		$('.user_portrait img').attr('src', 'images/user/' + portrait_id + '.png');
+	}, function() {
+		var t_id = $('.user_portrait img').attr('portrait_id');
+		$('.user_portrait img').attr('src', 'images/user/' + t_id + '.png');
+	});
+	$('.select_portrait img').click(function(event) {
+		var portrait_id = $(this).attr('portrait_id');
+		$('.user_portrait img').attr('portrait_id', portrait_id);
+		$('.select_portrait img').removeClass('t');
+		$(this).addClass('t');
+	});
+	$('.face_btn,.faces').hover(function() {
+		$('.faces').addClass('show');
+	}, function() {
+		$('.faces').removeClass('show');
+	});
+	$('.faces img').click(function(event) {
+		if($(this).attr('alt')!='') {
+			$('.text input').val($('.text input').val() + '[em_' + $(this).attr('alt') + ']');
+		}
+		$('.faces').removeClass('show');
+		$('.text input').focus();
+	});
+	$('.imgFileico').click(function(event) {
+		$('.imgFileBtn').click();
+	});
+			 var roomName = '{{ room_name }}';
+			 console.log(window.location.host);
+			 var chatSocket = new WebSocket('ws://'+window.location.host+'/ws/chat/'+roomName+'/');
+			chatSocket.onmessage = function(e){
+				var data = JSON.parse(e.data);
+				var message = data['message'];
+                 message = message.split(':');
+                var userName = message[0].trim();
+                message = message[1];
+                 var cur_user = $(".systeminfo>span").text().split("【")[1].split("】加入了房间")[0].trim();
+                 var myDate = new Date;
+                //var year = myDate.getFullYear(); //获取当前年
+               // var mon = myDate.getMonth() + 1; //获取当前月
+               // var date = myDate.getDate(); //获取当前日
+                 var hour = myDate.getHours();//获取当前小时数(0-23)
+                 if (hour<=9){
+                       hour="0"+hour.toString()
+                 }
+                 var minute = myDate.getMinutes();//获取当前分钟数(0-59)
+                 if (minute<=9){
+                       minute="0"+minute.toString()
+                 }
+                 var second = myDate.getSeconds();//获取当前秒
+                 if (second<=9){
+                       second="0"+second.toString()
+                 }
+               // var week = myDate.getDay();
+               // var weeks = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+              //  console.log(year, mon, date, weeks[week])
+               // $("#date_time").html(year + "年" + mon + "月" + date + "日" + weeks[week]);
 
-    var chatSocket = new WebSocket('ws://'+window.location.host+'/ws/chat/'+roomName+'/');
-    chatSocket.onmessage = function(e){
-        var data = JSON.parse(e.data);
-        var message = data['message']
-        document.querySelector('#chat-log').value+=(message+'\n');
-    };
+                     if (userName!=cur_user && message!=""){
+                           $('.main .chat_info').html($('.main .chat_info').html()+'<li class="left"><img src="/static/chat/chatrooms-html-master/images/user/12.png" alt=""><div class="user_content"><b>'+userName+'</b>&nbsp;&nbsp;<small >'+hour+':'+minute+':'+second+'</small>&nbsp;&nbsp;<div class="left_triangle"></div><p class="l_say"><span>'+message+'&nbsp;&nbsp;&nbsp;</span></p></div></li>')
+                     }else{
+                          $('.main .chat_info').html($('.main .chat_info').html()+'<li class="right"><img src="/static/chat/chatrooms-html-master/images/user/8.png" alt=""><div class="user_content">&nbsp;&nbsp;&nbsp;&nbsp;<b>'+userName+'</b>&nbsp;&nbsp;<small >'+hour+':'+minute+':'+second+'</small>&nbsp;<div class="right_triangle"></div><p class="l_say"><span>'+message+'&nbsp;&nbsp;&nbsp;</span></p></div></li>')
 
+                  }
+                     // 滚动条滚到最下面
+			        $('.scrollbar-macosx.scroll-content.scroll-scrolly_visible').animate({
+				    scrollTop: $('.scrollbar-macosx.scroll-content.scroll-scrolly_visible').prop('scrollHeight')
+			}, 500);
 
-    chatSocket.onclose = function(e){
-                console.log('websocket 断开: ' + e.code + ' ' + e.reason + ' ' + e.wasClean);
-        console.error('Chat socket closed unexpectedly');
-    };
+			};
+			chatSocket.onclose = function(e){
+						console.log('websocket 断开: ' + e.code + ' ' + e.reason + ' ' + e.wasClean);
+				console.error('Chat socket closed unexpectedly');
+			};
+			document.querySelector('.text input').focus();
+			document.querySelector('.text input').onkeyup = function(e){
+				if (e.keyCode===13){
+					document.querySelector('#subxx').click();
+				}
+			};
+			document.querySelector('#subxx').onclick = function(e){
 
-    document.querySelector('#input').focus();
-    document.querySelector('#input').onkeyup = function(e){
-        if (e.keyCode===13){
-            document.querySelector('#submit').click();
-        }
-    };
+				//var messageInputDom = document.querySelector('.text input');
+				  var str = $('.text input').val(); // 获取聊天内容
+                str = str.replace(/\</g,'&lt;');
+                str = str.replace(/\>/g,'&gt;');
+                str = str.replace(/\n/g,'<br/>');
+                str = str.replace(/\[em_([0-9]*)\]/g,'<img src="/static/chat/chatrooms-html-master/images/face/$1.gif" alt="" />');
+				chatSocket.send(JSON.stringify(
+					{'message':str}
+					)
+				);
+				str = $('.text input').val('');
+			};
 
-    document.querySelector('#submit').onclick = function(e){
-        var messageInputDom = document.querySelector('#input');
-        var message = messageInputDom.value;
-        chatSocket.send(JSON.stringify(
-            {'message':message}
-            )
-        );
-        messageInputDom.value = '';
-    };
 
 </script>
+
+
+
 </html>

@@ -30,6 +30,7 @@
     width: 35%;
     position: relative;
      border:1px solid #0d1117;
+    left: 20.5%;
 }
 
 .article_title{
@@ -111,7 +112,7 @@ pre{
     border-radius: 5px ;
     box-shadow: 0 0 6px 0 black;
     word-wrap: break-word;
-    margin-top: 50px;
+    /*margin-top: 50px;*/
 
 }
 
@@ -381,7 +382,9 @@ p {
             z-index: -1;
             font-weight: bold;
 }
-
+.hljs-ln-line.hljs-ln-numbers{
+    vertical-align: text-top;
+}
 
 .hljs-ln-n{
     /*margin-left:20px;*/

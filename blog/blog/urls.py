@@ -21,9 +21,10 @@ from .consumers import ChatConsumer
 from django.conf import settings ##新增
 from django.conf.urls import url ##新增
 from django.views.static import serve
-from .views import page_error,page_not_found,permission_denied
-
+from .views import page_not_found,permission_denied
+#page_error
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path('',include('index.urls')),
     path('user/',include('user.urls')),
@@ -31,7 +32,6 @@ urlpatterns = [
     #settings文件debug设置为False之后需要配置的两个路径
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT},name='media'),
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}, name='static'),
-
 
 ]
 
@@ -44,4 +44,4 @@ web_socket_urlpatterns = [
 # 定义错误跳转页面
 handler403 = permission_denied
 handler404 = page_not_found
-handler500 = page_error
+# handler500 = page_error

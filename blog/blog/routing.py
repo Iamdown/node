@@ -13,6 +13,7 @@ from .urls import web_socket_urlpatterns
 '''
 django 连接channels的路由
 '''
+print("hallo:")
 application =ProtocolTypeRouter({
     'websocket':AuthMiddlewareStack(
         URLRouter(web_socket_urlpatterns)
